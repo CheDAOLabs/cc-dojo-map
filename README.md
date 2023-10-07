@@ -5,14 +5,14 @@ A simple game example
 
 Requires Dojo to implement player movement
 
-Components:
-
-Player
-Map
-Systems:
-
-Movement
-Split into several stages:
+### Components:
+- Player
+- Map
+  
+### Systems:
+- Movement
+  
+### Split into several stages:
 
 - Parsing CC map data using Cairo, which can depend on the CC library
 - Implementing new map generation based on the CC library, without using the mint form
