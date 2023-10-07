@@ -1,8 +1,10 @@
-> This example is not a complete or fully functional implementation of the game. Instead, it is a basic demonstration that illustrates how to integrate C&C (Command and Control) into the game world.
+> This example is not a complete or fully functional implementation of the game. Instead, it is a basic demonstration that illustrates how to integrate C&C (Crypts And Caverns) into the game world.
 
 # crypts and caverns example
 A simple game example
+
 Requires Dojo to implement player movement
+
 Components:
 
 Player
