@@ -117,7 +117,7 @@ canvas {
 
 @font-face {
     font-family: VT323;
-    src: url(./assets/VT323-Regular-cee34b1d.ttf) format("truetype")
+    src: url(./VT323-Regular-cee34b1d.ttf) format("truetype")
 }
 
 .MapPre {
