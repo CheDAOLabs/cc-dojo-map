@@ -40,8 +40,15 @@
     padding: 2em;
 }
 
+
+@font-face {
+    font-family: 'VT323';
+    src: url('./VT323-Regular.ttf') format('truetype');
+}
+
+
 :root {
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-family: VT323, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
     font-weight: 400;
 
@@ -117,11 +124,6 @@ button:focus-visible {
 
 canvas {
     display: block;
-}
-
-@font-face {
-    font-family: 'VT323';
-    src: url('./VT323-Regular.ttf') format('truetype');
 }
 
 .MapPre {
