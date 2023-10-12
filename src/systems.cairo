@@ -24,7 +24,7 @@ mod spawn {
             )
         );
 
-        emit!(ctx.world, Moved { player: ctx.origin, x: offset, y: offset, });
+        emit!(ctx.world, Moved { player: ctx.origin, x: 4, y: 1, });
 
         return ();
     }
