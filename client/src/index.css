@@ -128,8 +128,8 @@ canvas {
 
 .MapPre {
     color: red;
-    /*width: 550px;*/
-    /*height: 550px;*/
+    /*width: 650px;*/
+    /*height: 650px;*/
     text-align: center;
     font-family: VT323;
     letter-spacing: 0px;
@@ -147,22 +147,22 @@ canvas {
 }
 
 /*.ant-spin {*/
-/*    width: 550px !important;*/
-/*    height: 550px !important;*/
-/*    max-height:550px !important;*/
+/*    width: 650px !important;*/
+/*    height: 650px !important;*/
+/*    max-height:650px !important;*/
 /*}*/
 
 .container {
     position: relative;
-    width: 550px;
-    height: 550px;
+    width: 650px;
+    height: 650px;
 }
 
 .div1,
 .div2 {
     position: absolute;
-    width: 550px;
-    height: 550px;
+    width: 650px;
+    height: 650px;
     margin: 0;
     padding: 0;
 }
