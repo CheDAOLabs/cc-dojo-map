@@ -20,7 +20,7 @@ mod spawn {
             ctx.world,
             (
                 Moves { player: ctx.origin, remaining: 100 },
-                Position { player: ctx.origin, x: offset, y: offset },
+                Position { player: ctx.origin, x: 4, y: 1 },
             )
         );
 
