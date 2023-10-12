@@ -132,7 +132,47 @@ canvas {
     /*height: 550px;*/
     text-align: center;
     font-family: VT323;
-    letter-spacing: 6px;
+    letter-spacing: 0px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.bl{
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.sk{
+    font-size: 10px;
+}
+
+/*.ant-spin {*/
+/*    width: 550px !important;*/
+/*    height: 550px !important;*/
+/*    max-height:550px !important;*/
+/*}*/
+
+.container {
+    position: relative;
+    width: 550px;
+    height: 550px;
+}
+
+.div1,
+.div2 {
+    position: absolute;
+    width: 550px;
+    height: 550px;
+    margin: 0;
+    padding: 0;
+}
+
+.div1 {
+    /*background-color: yellow;*/
+    z-index: 1;
+
+}
+
+.div2 {
+    /*background-color: blue;*/
 }
