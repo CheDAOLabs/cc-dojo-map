@@ -128,9 +128,11 @@ canvas {
 
 .MapPre {
     color: red;
-    width: 550px;
-    height: 550px;
+    /*width: 550px;*/
+    /*height: 550px;*/
     text-align: center;
-    font-family: VT323;
+    /*font-family: VT323;*/
     letter-spacing: 6px;
+    margin-left: auto;
+    margin-right: auto;
 }
