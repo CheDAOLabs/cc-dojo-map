@@ -17,6 +17,7 @@
     "@dojoengine/utils": "^0.0.2",
     "@latticexyz/recs": "^1.43.0",
     "@latticexyz/utils": "^1.43.0",
+    "antd": "^5.10.0",
     "ethers": "^5.7.2",
     "graphql": "^16.7.1",
     "graphql-request": "^6.1.0",
