@@ -92,12 +92,19 @@ mod move {
 #[system]
 mod cc {
     use dojo::world::Context;
-    use dojo_examples::dungeons_generator::get_layout;
+    use dojo_examples::dungeons_generator::{get_layout,get_entities};
     use dojo_examples::utils::pack::{PackTrait, Pack};
+    use dojo_examples::utils::{random::{random}, bit_operation::BitOperationTrait};
 
-    fn execute(ctx: Context,seed: u256, size: u128) {
+    fn get_size_in(seed: u256) -> u128 {
+        random(seed.left_shift(4), 8, 25)
+    }
 
-       let [layout,structure] =  get_layout(seed,size);
-       return ();
+    fn execute(ctx: Context,seed: u256) {
+
+        let size = get_size_in(seed);
+        let (layout,structure) = get_layout(seed,size);
+        let (x_array, y_array, t_array) = get_entities(seed, size);
+        return ();
     }
 }
