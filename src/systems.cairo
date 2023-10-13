@@ -88,3 +88,16 @@ mod move {
     }
 }
 
+
+#[system]
+mod cc {
+    use dojo::world::Context;
+    use dojo_examples::dungeons_generator::get_layout;
+    use dojo_examples::utils::pack::{PackTrait, Pack};
+
+    fn execute(ctx: Context,seed: u256, size: u128) {
+
+       let [layout,structure] =  get_layout(seed,size);
+       return ();
+    }
+}
