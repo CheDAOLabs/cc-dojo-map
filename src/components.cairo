@@ -1,4 +1,5 @@
 use starknet::ContractAddress;
+use dojo_examples::utils::pack::{PackTrait, Pack};
 
 #[derive(Component, Copy, Drop, Serde, SerdeLen)]
 struct Moves {
@@ -57,5 +58,8 @@ mod tests {
 struct CC {
     #[key]
     player: ContractAddress,
-    remaining: u8,
+    size: u128,
+    layout_first: felt252,
+    layout_second: felt252,
+    layout_third: felt252,
 }
