@@ -37,3 +37,4 @@ trait ICryptsAndCaverns<TState> {
 
     fn mint(ref self: TState) -> u128;
 }
+

@@ -5,3 +5,4 @@ mod constants;
 mod events;
 mod interface;
 mod utils;
+mod dungeons_generator;

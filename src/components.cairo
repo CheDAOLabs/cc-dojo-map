@@ -52,3 +52,10 @@ mod tests {
         assert(PositionTrait::is_equal(position, Position { player, x: 420, y: 0 }), 'not equal');
     }
 }
+
+#[derive(Component, Copy, Drop, Serde, SerdeLen)]
+struct CC {
+    #[key]
+    player: ContractAddress,
+    remaining: u8,
+}
