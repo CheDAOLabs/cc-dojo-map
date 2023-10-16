@@ -1566,8 +1566,6 @@ fn test_pow() {
         'pow 252'
     );
 }
-
-
 // ------------------------------ generate script in Java ------------------------------
 
 // public class Main {
@@ -1636,3 +1634,5 @@ fn test_pow() {
 //     }
 
 // }
+
+

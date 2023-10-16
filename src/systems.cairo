@@ -93,7 +93,7 @@ mod move {
 mod cc {
     use dojo::world::Context;
     use cc_dojo_map::components::CC;
-    use cc_dojo_map::dungeons_generator::{get_layout,get_entities};
+    use cc_dojo_map::dungeons_generator::{get_layout, get_entities};
     use cc_dojo_map::utils::pack::{PackTrait, Pack};
     use cc_dojo_map::utils::{random::{random}, bit_operation::BitOperationTrait};
 
@@ -101,23 +101,20 @@ mod cc {
         random(seed.left_shift(4), 8, 25)
     }
 
-    fn execute(ctx: Context,seed: u256) {
-
+    fn execute(ctx: Context, seed: u256) {
         let size = get_size_in(seed);
-        let (layout,structure) = get_layout(seed,size);
+        let (layout, structure) = get_layout(seed, size);
         let (x_array, y_array, t_array) = get_entities(seed, size);
 
         set!(
             ctx.world,
-            (
-                CC {
-                    player: ctx.origin,
-                    size: size,
-                    layout_first: layout.first,
-                    layout_second: layout.second,
-                    layout_third: layout.third,
-                }
-            )
+            (CC {
+                player: ctx.origin,
+                size: size,
+                layout_first: layout.first,
+                layout_second: layout.second,
+                layout_third: layout.third,
+            })
         );
 
         return ();
