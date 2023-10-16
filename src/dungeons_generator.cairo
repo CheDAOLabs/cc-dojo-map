@@ -1,8 +1,8 @@
 //use debug::PrintTrait;
-use dojo_examples::utils::bit_operation::BitOperationTrait;
-use dojo_examples::utils::random::random;
+use cc_dojo_map::utils::bit_operation::BitOperationTrait;
+use cc_dojo_map::utils::random::random;
 // use cc_starknet::utils::map::MapTrait;
-use dojo_examples::utils::pack::{PackTrait, Pack};
+use cc_dojo_map::utils::pack::{PackTrait, Pack};
 
 // ------------------------------------------- Structs -------------------------------------------
 

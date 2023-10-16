@@ -4,14 +4,14 @@ mod tests {
     use dojo::test_utils::spawn_test_world;
 
     // project imports
-    use dojo_examples::components::{position, Position};
-    use dojo_examples::components::{moves, Moves};
-    use dojo_examples::systems::spawn;
-    use dojo_examples::systems::move;
-    use dojo_examples::constants::OFFSET;
+    use cc_dojo_map::components::{position, Position};
+    use cc_dojo_map::components::{moves, Moves};
+    use cc_dojo_map::systems::spawn;
+    use cc_dojo_map::systems::move;
+    use cc_dojo_map::constants::OFFSET;
 
     #[event]
-    use dojo_examples::events::{Event, Moved};
+    use cc_dojo_map::events::{Event, Moved};
 
 
     // helper setup function

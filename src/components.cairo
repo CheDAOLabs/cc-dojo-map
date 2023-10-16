@@ -1,5 +1,5 @@
 use starknet::ContractAddress;
-use dojo_examples::utils::pack::{PackTrait, Pack};
+use cc_dojo_map::utils::pack::{PackTrait, Pack};
 
 #[derive(Component, Copy, Drop, Serde, SerdeLen)]
 struct Moves {

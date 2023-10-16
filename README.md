@@ -73,7 +73,7 @@ sozo build
 5. Deploy the contract:
 
 ```shell
-sozo migrate --name dojo_examples
+sozo migrate --name cc_dojo_map  
 ```
 
 ### build client
@@ -81,6 +81,7 @@ sozo migrate --name dojo_examples
 1.Build the frontend:
 
 ```shell
+cd client
 yarn
 ```
 

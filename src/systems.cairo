@@ -2,12 +2,12 @@
 mod spawn {
     use dojo::world::Context;
 
-    use dojo_examples::components::Position;
-    use dojo_examples::components::Moves;
-    use dojo_examples::constants::OFFSET;
+    use cc_dojo_map::components::Position;
+    use cc_dojo_map::components::Moves;
+    use cc_dojo_map::constants::OFFSET;
 
     #[event]
-    use dojo_examples::events::{Event, Moved};
+    use cc_dojo_map::events::{Event, Moved};
 
 
     // so we don't go negative
@@ -34,11 +34,11 @@ mod spawn {
 mod move {
     use dojo::world::Context;
 
-    use dojo_examples::components::Position;
-    use dojo_examples::components::Moves;
+    use cc_dojo_map::components::Position;
+    use cc_dojo_map::components::Moves;
 
     #[event]
-    use dojo_examples::events::{Event, Moved};
+    use cc_dojo_map::events::{Event, Moved};
 
     #[derive(Serde, Drop)]
     enum Direction {
@@ -92,10 +92,10 @@ mod move {
 #[system]
 mod cc {
     use dojo::world::Context;
-    use dojo_examples::components::CC;
-    use dojo_examples::dungeons_generator::{get_layout,get_entities};
-    use dojo_examples::utils::pack::{PackTrait, Pack};
-    use dojo_examples::utils::{random::{random}, bit_operation::BitOperationTrait};
+    use cc_dojo_map::components::CC;
+    use cc_dojo_map::dungeons_generator::{get_layout,get_entities};
+    use cc_dojo_map::utils::pack::{PackTrait, Pack};
+    use cc_dojo_map::utils::{random::{random}, bit_operation::BitOperationTrait};
 
     fn get_size_in(seed: u256) -> u128 {
         random(seed.left_shift(4), 8, 25)
