@@ -1,7 +1,5 @@
-//use debug::PrintTrait;
 use cc_dojo_map::utils::bit_operation::BitOperationTrait;
 use cc_dojo_map::utils::random::random;
-// use cc_starknet::utils::map::MapTrait;
 use cc_dojo_map::utils::pack::{PackTrait, Pack};
 
 // ------------------------------------------- Structs -------------------------------------------
@@ -29,15 +27,6 @@ struct Room {
     width: u128,
     height: u128
 }
-
-// cause some annoying errors
-// #[derive(Copy, Drop)]
-// enum Direction {
-//     LEFT,
-//     UP,
-//     RIGHT,
-//     DOWN,
-// }
 
 // ------------------------------------------- Generator -------------------------------------------
 

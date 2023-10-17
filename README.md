@@ -55,7 +55,7 @@ git clone https://github.com/CheDAOLabs/cc-dojo-map.git
 2. Execute the script, specifying the Dojo version:
 
 ```shell
-dojoup -v 0.2.3
+dojoup
 ```
 
 3. Start Katana:
@@ -96,3 +96,10 @@ yarn dev
 ```shell
 http://localhost:5173/
 ```
+
+### Version check
+
+| Name | Version | Compatibility Dojo version
+| --- | --- | --- |
+|cc-dojo-map|v0.1.0|v0.2.3|
+|cc-dojo-map|v0.2.0|v0.3.0|
