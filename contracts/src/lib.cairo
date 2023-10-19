@@ -7,6 +7,8 @@ mod systems {
 
     // raw example with #[starknet::contract] decorator
     mod raw_contract;
+
+    mod cc;
 }
 
 mod utils;
