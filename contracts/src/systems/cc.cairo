@@ -4,6 +4,7 @@ use dojo::world::{IWorldDispatcher, IWorldDispatcherTrait};
 trait ITest<TContractState> {
     fn mint(ref self: TContractState);
     fn generate(self: @TContractState, token_id: u256);
+    fn seed(self: @TContractState, token_id: u256);
 }
 
 #[dojo::contract]
@@ -33,6 +34,19 @@ mod cc {
         name: felt252
     }
 
+    // #[derive(Drop, Starknet::Event)]
+    // struct DDDDD {
+    //     size: u8,
+    //     environment: u8,
+    //     structure: u8,
+    //     legendary: u8,
+    //     layout: Pack,
+    //     doors: Pack,
+    //     points: Pack,
+    //     affinity: felt252,
+    //     dungeon_name: Name
+    // }
+
     #[constructor]
     fn constructor(ref self: ContractState) {
         let mut state = Dungeons::unsafe_new_contract_state();
@@ -51,10 +65,14 @@ mod cc {
 
             Dungeons::mint(ref state);
             let token_id = Dungeons::ERC721Enumerable::token_of_owner_by_index(
-                @state, get_caller_address(), 0
+                @state, get_caller_address(), 1
             );
             emit!(world, Mint { TokenId: token_id });
+
+            let dungeon = Dungeons::generate_dungeon_dojo(@state, token_id);
+            emit!(world,)
         }
+
 
         fn generate(self: @ContractState, token_id: u256) {
             let world = self.world_dispatcher.read();
@@ -63,3 +81,4 @@ mod cc {
         }
     }
 }
+
