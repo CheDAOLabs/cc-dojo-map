@@ -34,6 +34,7 @@ trait IERC721EnumerableCamelOnly<TContractState> {
 mod Dungeons {
     // ------------------------------------------ Imports -------------------------------------------
 
+    use dojo::world::{IWorldDispatcher, IWorldDispatcherTrait};
     use core::traits::TryInto;
     use starknet::{
         ContractAddress, SyscallResult, info::get_caller_address,
@@ -53,7 +54,7 @@ mod Dungeons {
     use dojo_erc::token::erc721::interface::{IERC721, IERC721CamelOnly};
     use dojo_erc::token::erc721::interface;
     use dojo_erc::token::erc721::ERC721;
-    use dojo::world::{IWorldDispatcher, IWorldDispatcherTrait};
+
 
     // ------------------------------------------- Structs -------------------------------------------
 
@@ -166,6 +167,7 @@ mod Dungeons {
     #[storage]
     struct Storage {
         world_dispatcher: IWorldDispatcher,
+        _world: ContractAddress,
         // -------------- dungeons ----------------
         dungeons: LegacyMap::<u128, Dungeon>,
         seeds: LegacyMap::<u128, u256>,
@@ -517,8 +519,6 @@ mod Dungeons {
 
         fn token_uri(self: @ContractState, token_id: u256) -> Array<felt252> {
             token_URI(self, token_id)
-        // let mut state = ERC721::unsafe_new_contract_state();
-        // ERC721::ERC721MetadataImpl::token_uri(@state, token_id)
         }
     }
 
@@ -570,16 +570,16 @@ mod Dungeons {
         }
     }
 
-    // #[external(v0)]
-    // fn supports_interface(self: @ContractState, interface_id: felt252) -> bool {
-    //     let mut state = ERC721::unsafe_new_contract_state();
-    //     ERC721::ISRC5::supports_interface(@state, interface_id)
-    // }
+//    #[external(v0)]
+//     fn supports_interface(self: @ContractState, interface_id: felt252) -> bool {
+//         let mut state = ERC721::unsafe_new_contract_state();
+//         ERC721::ISRC5::supports_interface(@state, interface_id)
+//     }
 
-    // #[external(v0)]
-    // fn supportsInterface(self: @ContractState, interfaceId: felt252) -> bool {
-    //     supports_interface(self, interfaceId)
-    // }
+//     #[external(v0)]
+//     fn supportsInterface(self: @ContractState, interfaceId: felt252) -> bool {
+//         supports_interface(self, interfaceId)
+//     }
 
     // ------ Dungeon -------
     #[external(v0)]
@@ -1105,9 +1105,10 @@ mod Dungeons {
     // ------------------------------------------ Constructor ------------------------------------------
 
     #[constructor]
-    fn constructor(ref self: ContractState) {
+    fn constructor(ref self: ContractState,world: ContractAddress) {
         let mut state = ERC721::unsafe_new_contract_state();
         ERC721::InternalImpl::initializer(ref state, 'C&C', 'C&C','');
+        self._world.write(world);
 
         self.restricted.write(false);
         self.last_mint.write(0);
