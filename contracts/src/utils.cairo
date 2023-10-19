@@ -1,3 +1,9 @@
+mod random;
+mod bit_operation;
+// mod map;
+mod pack;
+mod pow;
+
 use cc_dojo_map::models::{Position, Direction};
 
 fn next_position(mut position: Position, direction: Direction) -> Position {

@@ -1,4 +1,5 @@
 mod interface;
+mod dungeons_generator;
 mod models;
 
 mod systems {
