@@ -165,6 +165,7 @@ mod Dungeons {
 
     #[storage]
     struct Storage {
+        world_dispatcher: IWorldDispatcher,
         // -------------- dungeons ----------------
         dungeons: LegacyMap::<u128, Dungeon>,
         seeds: LegacyMap::<u128, u256>,
@@ -403,6 +404,7 @@ mod Dungeons {
 
         let mut state = ERC721::unsafe_new_contract_state();
         ERC721::InternalImpl::_mint(ref state, user, token_id.into());
+        
         // store generate result into storage
         self.dungeons.write(token_id, generate_dungeon_in(@self, seed, get_size_in(seed)));
 
