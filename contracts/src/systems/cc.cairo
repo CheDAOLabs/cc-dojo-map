@@ -4,7 +4,6 @@ use dojo::world::{IWorldDispatcher, IWorldDispatcherTrait};
 trait ITest<TContractState> {
     fn mint(ref self: TContractState);
     fn generate(self: @TContractState, token_id: u256);
-    fn seed(self: @TContractState, token_id: u256);
 }
 
 #[dojo::contract]
@@ -19,7 +18,8 @@ mod cc {
     #[derive(Drop, starknet::Event)]
     enum Event {
         Mint: Mint,
-        TokenName: TokenName
+        TokenName: TokenName,
+        // Try: Try,
     }
 
     #[derive(Drop, starknet::Event)]
@@ -35,16 +35,17 @@ mod cc {
     }
 
     // #[derive(Drop, Starknet::Event)]
-    // struct DDDDD {
-    //     size: u8,
-    //     environment: u8,
-    //     structure: u8,
-    //     legendary: u8,
-    //     layout: Pack,
-    //     doors: Pack,
-    //     points: Pack,
-    //     affinity: felt252,
-    //     dungeon_name: Name
+    // struct Try {
+    //     #[key]
+    //     Size: u8,
+    //     Environment: u8,
+    //     Structure: u8,
+    //     // legendary: u8,
+    // // layout: Pack,
+    // // doors: Pack,
+    // // points: Pack,
+    // // affinity: felt252,
+    // // dungeon_name: Name
     // }
 
     #[constructor]
@@ -70,7 +71,20 @@ mod cc {
             emit!(world, Mint { TokenId: token_id });
 
             let dungeon = Dungeons::generate_dungeon_dojo(@state, token_id);
-            emit!(world,)
+            // emit!(
+            //     world,
+            //     Try {
+            //         Size: dungeon.size,
+            //         Environment: dungeon.environment,
+            //         Structure: dungeon.structure,
+            //         // legendary: dungeon.legendary,
+            //     // layout: dungeon.layout,
+            //     // doors: dungeon.doors,
+            //     // points: dungeon.points,
+            //     // affinity: dungeon.affinity,
+            //     // dungeon_name: dungeon.dungeon_name
+            //     }
+            // )
         }
 
 
