@@ -77,11 +77,12 @@ mod cc {
             let token_id = Dungeons::ERC721Enumerable::token_of_owner_by_index(
                 @state, get_caller_address(), 1
             );
-            emit!(world, Mint { TokenId: token_id });
 
-            let dungeon = Dungeons::generate_dungeon(@state, token_id);
 
-            emit!(world, Mint { TokenId: dungeon.size.into() });
+            let dungeon: DungeonDojo = Dungeons::generate_dungeon_dojo(@state, token_id);
+
+            emit!(world, TokenName { name: dungeon.layout.first });
+
         // emit!(
         //     world,
         //     Try {
