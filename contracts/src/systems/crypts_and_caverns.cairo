@@ -46,7 +46,8 @@ mod Dungeons {
     };
     use super::{IERC721Enumerable, IERC721EnumerableCamelOnly};
 
-    use openzeppelin::token::erc721::{ERC721, interface};
+    //use openzeppelin::token::erc721::{ERC721, interface};
+    use dojo_erc::token::erc721::interface::{IERC721Dispatcher, IERC721DispatcherTrait};
 
     // ------------------------------------------- Structs -------------------------------------------
 
@@ -384,7 +385,7 @@ mod Dungeons {
     // ------ ERC721 -------
 
     #[external(v0)]
-    fn mint(ref self: ContractState) {
+    fn mint(ref self: ContractState, world: IWorldDispatcher, erc721_address: ContractAddress) {
         // assert(self.last_mint.read() < 9000, 'Token sold out');
         // assert(!self.restricted.read(), 'Dungeon is restricted');
 
@@ -394,8 +395,10 @@ mod Dungeons {
         self.last_mint.write(token_id);
         self.seeds.write(token_id, seed);
 
-        let mut state = ERC721::unsafe_new_contract_state();
-        ERC721::InternalImpl::_mint(ref state, user, token_id.into());
+        // let mut state = ERC721::unsafe_new_contract_state();
+        // ERC721::InternalImpl::_mint(ref state, user, token_id.into());
+        let token = IERC721Dispatcher { contract_address: erc721_address };
+        token.transfer_from(world.contract_address, claimant.address, item.minted);
         // store generate result into storage
         self.dungeons.write(token_id, generate_dungeon_in(@self, seed, get_size_in(seed)));
 
