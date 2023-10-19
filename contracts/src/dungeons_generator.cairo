@@ -1,6 +1,6 @@
-use cc_dojo_map::utils::bit_operation::BitOperationTrait;
-use cc_dojo_map::utils::random::random;
-use cc_dojo_map::utils::pack::{PackTrait, Pack};
+use cc_dojo_map::cc_utils::bit_operation::BitOperationTrait;
+use cc_dojo_map::cc_utils::random::random;
+use cc_dojo_map::cc_utils::pack::{PackTrait, Pack};
 
 // ------------------------------------------- Structs -------------------------------------------
 
