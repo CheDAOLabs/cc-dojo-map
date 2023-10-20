@@ -76,8 +76,7 @@ function App() {
     const [loading, setLoading] = useState(false);
     const [entities, setEntities] = useState(null);
     const [maps, setMaps] = useState([]);
-    const [mapData, setMapData] = useState([
-    ]);
+    const [mapData, setMapData] = useState([]);
     const [tokenId, setTokenId] = useState(1);
     const [mapName, setMapName] = useState("loading...")
     const [owner, setOwner] = useState("0x...")
@@ -86,7 +85,7 @@ function App() {
         setLoading(true);
         console.log("maps", maps)
         let map = findMapFromId(token_id);
-        if(!map){
+        if (!map) {
             return;
         }
         console.log("map", map)
@@ -111,11 +110,10 @@ function App() {
         if (!position) {
             return rowString;
         }
-        if(mapData.length==0){
+        if (mapData.length == 0) {
             return rowString;
         }
-        if(!position.vec['y'])
-        {
+        if (!position.vec['y']) {
             return rowString;
         }
         let dungeon = JSON.parse(JSON.stringify(mapData));
@@ -232,7 +230,7 @@ function App() {
                 let m = findMapFromNodes(edges);
                 if (m) {
                     setMaps(m);
-                    console.log("setmap",m.length)
+                    console.log("setmap", m.length)
                     await loadMap(1);
                 }
 
@@ -302,6 +300,17 @@ function App() {
         await loadMap(value)
     };
 
+    const [gTokenId, setGTokenId] = useState(1)
+    const onChangeGTokenId = async (value: number) => {
+        console.log('changed', value);
+        setGTokenId(value);
+        await loadMap(gTokenId)
+    };
+
+    const generateToken = async (account: any) => {
+        generate(account, gTokenId)
+    }
+
     return (
         <ConfigProvider
             theme={{
@@ -319,7 +328,6 @@ function App() {
             <div className="card">
                 <button onClick={() => spawn(account)}>Spawn</button>
                 <button onClick={() => mint(account)}>Mint</button>
-                <button onClick={() => generate(account)}>Generate</button>
 
                 <div>Moves Left: {moves ? `${moves['remaining']}` : 'Need to Spawn'}</div>
                 <div>Position: {position ? `${position.vec['x']}, ${position.vec['y']}` : 'Need to Spawn'}</div>
@@ -373,12 +381,22 @@ function App() {
                                              value={tokenId}
                                              onChange={onChangeTokenId}/></p>
 
-                    <p>name: {mapName}</p>
+                    {/*<p>name: {mapName}</p>*/}
                     <p>owner: {owner}</p>
                 </div>
 
                 <br/>
                 <br/>
+
+                <div>
+
+                    <InputNumber disabled={false} min={1} max={10000} defaultValue={1}
+                                 value={gTokenId}
+                                 onChange={onChangeGTokenId}/>
+
+                    <button onClick={() => generateToken(account)}>Generate</button>
+
+                </div>
 
                 <br/>
                 <br/>
