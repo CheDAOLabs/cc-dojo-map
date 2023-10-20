@@ -110,7 +110,7 @@ mod cc {
 
         CCImpl::generate(@self, 1);
 
-        // CCImpl::svg(@self, 1);
+        CCImpl::svg(@self, 1);
 
         let map: Map = get!(get_world(@self), 1, (Map));
         emit!(get_world(@self), ForTest { One: 1, Two: 2, Three: 3, Param: map.layout1 });
@@ -155,6 +155,7 @@ mod cc {
                     dungeon_name3: dungeon.dungeon_name.third,
                     dungeon_name4: dungeon.dungeon_name.fourth,
                     dungeon_name5: dungeon.dungeon_name.fifth,
+                    owner: Dungeons::ERC721Impl::owner_of(@state, token_id)
                 }
             )
         //
