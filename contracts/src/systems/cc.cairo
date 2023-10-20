@@ -57,7 +57,7 @@ mod cc {
     use Dungeons::{DungeonDojo, Name};
     use super::CCInterface;
     use starknet::{get_caller_address, ContractAddress};
-    use cc_dojo_map::models::cc_map::{Map, SVG};
+    use cc_dojo_map::models::cc_map::Map;
 
     // ------------------------------------- event -------------------------------------
 
@@ -167,10 +167,11 @@ mod cc {
 
             let world = get_world(self);
             let mut index = 0;
+            let topic: felt252 = 'svg';
             loop {
                 match svg.pop_front() {
                     Option::Some(part) => {
-                        emit!(world, Svg { Topic: 'svg', Index: index, Content: part });
+                        emit!(world, Svg { Topic: topic, Index: index, Content: part });
                         index += 1;
                     },
                     Option::None(_) => {
