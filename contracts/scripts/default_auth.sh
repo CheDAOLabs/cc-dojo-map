@@ -2,17 +2,23 @@
 set -euo pipefail
 pushd $(dirname "$0")/..
 
-export WORLD_ADDRESS="0x52bec888add6c968772ca5f240b0da537dff15863eb6d5a37c931010dd26bb2";
+export RPC_URL="http://localhost:5050";
+
+export WORLD_ADDRESS=$(cat ./target/dev/manifest.json | jq -r '.world.address')
+
+export ACTIONS_ADDRESS=$(cat ./target/dev/manifest.json | jq -r '.contracts[] | select(.name == "actions" ).address')
+
+echo "---------------------------------------------------------------------------"
+echo world : $WORLD_ADDRESS
+echo " "
+echo actions : $ACTIONS_ADDRESS
+echo "---------------------------------------------------------------------------"
 
 # enable system -> component authorizations
 COMPONENTS=("Position" "Moves" )
 
 for component in ${COMPONENTS[@]}; do
-    sozo auth writer $component spawn --world $WORLD_ADDRESS
-done
-
-for component in ${COMPONENTS[@]}; do
-    sozo auth writer $component move --world $WORLD_ADDRESS
+    sozo auth writer $component $ACTIONS_ADDRESS --world $WORLD_ADDRESS --rpc-url $RPC_URL
 done
 
 echo "Default authorizations have been successfully set."
