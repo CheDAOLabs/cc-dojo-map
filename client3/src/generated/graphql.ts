@@ -23,6 +23,7 @@ export type Scalars = {
   felt252: { input: any; output: any; }
   u8: { input: any; output: any; }
   u32: { input: any; output: any; }
+  u128: { input: any; output: any; }
 };
 
 export type Entity = {
@@ -70,6 +71,223 @@ export type EventEdge = {
   node?: Maybe<Event>;
 };
 
+export type Map = {
+  __typename?: 'Map';
+  affinity?: Maybe<Scalars['felt252']['output']>;
+  doors1?: Maybe<Scalars['felt252']['output']>;
+  doors2?: Maybe<Scalars['felt252']['output']>;
+  doors3?: Maybe<Scalars['felt252']['output']>;
+  dungeon_name1?: Maybe<Scalars['felt252']['output']>;
+  dungeon_name2?: Maybe<Scalars['felt252']['output']>;
+  dungeon_name3?: Maybe<Scalars['felt252']['output']>;
+  dungeon_name4?: Maybe<Scalars['felt252']['output']>;
+  dungeon_name5?: Maybe<Scalars['felt252']['output']>;
+  entity?: Maybe<Entity>;
+  environment?: Maybe<Scalars['u8']['output']>;
+  layout1?: Maybe<Scalars['felt252']['output']>;
+  layout2?: Maybe<Scalars['felt252']['output']>;
+  layout3?: Maybe<Scalars['felt252']['output']>;
+  legendary?: Maybe<Scalars['u8']['output']>;
+  owner?: Maybe<Scalars['ContractAddress']['output']>;
+  points1?: Maybe<Scalars['felt252']['output']>;
+  points2?: Maybe<Scalars['felt252']['output']>;
+  points3?: Maybe<Scalars['felt252']['output']>;
+  size?: Maybe<Scalars['u8']['output']>;
+  structure?: Maybe<Scalars['u8']['output']>;
+  token_id?: Maybe<Scalars['u128']['output']>;
+};
+
+export type MapConnection = {
+  __typename?: 'MapConnection';
+  edges?: Maybe<Array<Maybe<MapEdge>>>;
+  total_count: Scalars['Int']['output'];
+};
+
+export type MapEdge = {
+  __typename?: 'MapEdge';
+  cursor?: Maybe<Scalars['Cursor']['output']>;
+  node?: Maybe<Map>;
+};
+
+export type MapOrder = {
+  direction: OrderDirection;
+  field: MapOrderField;
+};
+
+export enum MapOrderField {
+  Affinity = 'AFFINITY',
+  Doors1 = 'DOORS1',
+  Doors2 = 'DOORS2',
+  Doors3 = 'DOORS3',
+  DungeonName1 = 'DUNGEON_NAME1',
+  DungeonName2 = 'DUNGEON_NAME2',
+  DungeonName3 = 'DUNGEON_NAME3',
+  DungeonName4 = 'DUNGEON_NAME4',
+  DungeonName5 = 'DUNGEON_NAME5',
+  Environment = 'ENVIRONMENT',
+  Layout1 = 'LAYOUT1',
+  Layout2 = 'LAYOUT2',
+  Layout3 = 'LAYOUT3',
+  Legendary = 'LEGENDARY',
+  Owner = 'OWNER',
+  Points1 = 'POINTS1',
+  Points2 = 'POINTS2',
+  Points3 = 'POINTS3',
+  Size = 'SIZE',
+  Structure = 'STRUCTURE',
+  TokenId = 'TOKEN_ID'
+}
+
+export type MapWhereInput = {
+  affinity?: InputMaybe<Scalars['felt252']['input']>;
+  affinityEQ?: InputMaybe<Scalars['felt252']['input']>;
+  affinityGT?: InputMaybe<Scalars['felt252']['input']>;
+  affinityGTE?: InputMaybe<Scalars['felt252']['input']>;
+  affinityLT?: InputMaybe<Scalars['felt252']['input']>;
+  affinityLTE?: InputMaybe<Scalars['felt252']['input']>;
+  affinityNEQ?: InputMaybe<Scalars['felt252']['input']>;
+  doors1?: InputMaybe<Scalars['felt252']['input']>;
+  doors1EQ?: InputMaybe<Scalars['felt252']['input']>;
+  doors1GT?: InputMaybe<Scalars['felt252']['input']>;
+  doors1GTE?: InputMaybe<Scalars['felt252']['input']>;
+  doors1LT?: InputMaybe<Scalars['felt252']['input']>;
+  doors1LTE?: InputMaybe<Scalars['felt252']['input']>;
+  doors1NEQ?: InputMaybe<Scalars['felt252']['input']>;
+  doors2?: InputMaybe<Scalars['felt252']['input']>;
+  doors2EQ?: InputMaybe<Scalars['felt252']['input']>;
+  doors2GT?: InputMaybe<Scalars['felt252']['input']>;
+  doors2GTE?: InputMaybe<Scalars['felt252']['input']>;
+  doors2LT?: InputMaybe<Scalars['felt252']['input']>;
+  doors2LTE?: InputMaybe<Scalars['felt252']['input']>;
+  doors2NEQ?: InputMaybe<Scalars['felt252']['input']>;
+  doors3?: InputMaybe<Scalars['felt252']['input']>;
+  doors3EQ?: InputMaybe<Scalars['felt252']['input']>;
+  doors3GT?: InputMaybe<Scalars['felt252']['input']>;
+  doors3GTE?: InputMaybe<Scalars['felt252']['input']>;
+  doors3LT?: InputMaybe<Scalars['felt252']['input']>;
+  doors3LTE?: InputMaybe<Scalars['felt252']['input']>;
+  doors3NEQ?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name1?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name1EQ?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name1GT?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name1GTE?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name1LT?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name1LTE?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name1NEQ?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name2?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name2EQ?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name2GT?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name2GTE?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name2LT?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name2LTE?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name2NEQ?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name3?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name3EQ?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name3GT?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name3GTE?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name3LT?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name3LTE?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name3NEQ?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name4?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name4EQ?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name4GT?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name4GTE?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name4LT?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name4LTE?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name4NEQ?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name5?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name5EQ?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name5GT?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name5GTE?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name5LT?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name5LTE?: InputMaybe<Scalars['felt252']['input']>;
+  dungeon_name5NEQ?: InputMaybe<Scalars['felt252']['input']>;
+  environment?: InputMaybe<Scalars['u8']['input']>;
+  environmentEQ?: InputMaybe<Scalars['u8']['input']>;
+  environmentGT?: InputMaybe<Scalars['u8']['input']>;
+  environmentGTE?: InputMaybe<Scalars['u8']['input']>;
+  environmentLT?: InputMaybe<Scalars['u8']['input']>;
+  environmentLTE?: InputMaybe<Scalars['u8']['input']>;
+  environmentNEQ?: InputMaybe<Scalars['u8']['input']>;
+  layout1?: InputMaybe<Scalars['felt252']['input']>;
+  layout1EQ?: InputMaybe<Scalars['felt252']['input']>;
+  layout1GT?: InputMaybe<Scalars['felt252']['input']>;
+  layout1GTE?: InputMaybe<Scalars['felt252']['input']>;
+  layout1LT?: InputMaybe<Scalars['felt252']['input']>;
+  layout1LTE?: InputMaybe<Scalars['felt252']['input']>;
+  layout1NEQ?: InputMaybe<Scalars['felt252']['input']>;
+  layout2?: InputMaybe<Scalars['felt252']['input']>;
+  layout2EQ?: InputMaybe<Scalars['felt252']['input']>;
+  layout2GT?: InputMaybe<Scalars['felt252']['input']>;
+  layout2GTE?: InputMaybe<Scalars['felt252']['input']>;
+  layout2LT?: InputMaybe<Scalars['felt252']['input']>;
+  layout2LTE?: InputMaybe<Scalars['felt252']['input']>;
+  layout2NEQ?: InputMaybe<Scalars['felt252']['input']>;
+  layout3?: InputMaybe<Scalars['felt252']['input']>;
+  layout3EQ?: InputMaybe<Scalars['felt252']['input']>;
+  layout3GT?: InputMaybe<Scalars['felt252']['input']>;
+  layout3GTE?: InputMaybe<Scalars['felt252']['input']>;
+  layout3LT?: InputMaybe<Scalars['felt252']['input']>;
+  layout3LTE?: InputMaybe<Scalars['felt252']['input']>;
+  layout3NEQ?: InputMaybe<Scalars['felt252']['input']>;
+  legendary?: InputMaybe<Scalars['u8']['input']>;
+  legendaryEQ?: InputMaybe<Scalars['u8']['input']>;
+  legendaryGT?: InputMaybe<Scalars['u8']['input']>;
+  legendaryGTE?: InputMaybe<Scalars['u8']['input']>;
+  legendaryLT?: InputMaybe<Scalars['u8']['input']>;
+  legendaryLTE?: InputMaybe<Scalars['u8']['input']>;
+  legendaryNEQ?: InputMaybe<Scalars['u8']['input']>;
+  owner?: InputMaybe<Scalars['ContractAddress']['input']>;
+  ownerEQ?: InputMaybe<Scalars['ContractAddress']['input']>;
+  ownerGT?: InputMaybe<Scalars['ContractAddress']['input']>;
+  ownerGTE?: InputMaybe<Scalars['ContractAddress']['input']>;
+  ownerLT?: InputMaybe<Scalars['ContractAddress']['input']>;
+  ownerLTE?: InputMaybe<Scalars['ContractAddress']['input']>;
+  ownerNEQ?: InputMaybe<Scalars['ContractAddress']['input']>;
+  points1?: InputMaybe<Scalars['felt252']['input']>;
+  points1EQ?: InputMaybe<Scalars['felt252']['input']>;
+  points1GT?: InputMaybe<Scalars['felt252']['input']>;
+  points1GTE?: InputMaybe<Scalars['felt252']['input']>;
+  points1LT?: InputMaybe<Scalars['felt252']['input']>;
+  points1LTE?: InputMaybe<Scalars['felt252']['input']>;
+  points1NEQ?: InputMaybe<Scalars['felt252']['input']>;
+  points2?: InputMaybe<Scalars['felt252']['input']>;
+  points2EQ?: InputMaybe<Scalars['felt252']['input']>;
+  points2GT?: InputMaybe<Scalars['felt252']['input']>;
+  points2GTE?: InputMaybe<Scalars['felt252']['input']>;
+  points2LT?: InputMaybe<Scalars['felt252']['input']>;
+  points2LTE?: InputMaybe<Scalars['felt252']['input']>;
+  points2NEQ?: InputMaybe<Scalars['felt252']['input']>;
+  points3?: InputMaybe<Scalars['felt252']['input']>;
+  points3EQ?: InputMaybe<Scalars['felt252']['input']>;
+  points3GT?: InputMaybe<Scalars['felt252']['input']>;
+  points3GTE?: InputMaybe<Scalars['felt252']['input']>;
+  points3LT?: InputMaybe<Scalars['felt252']['input']>;
+  points3LTE?: InputMaybe<Scalars['felt252']['input']>;
+  points3NEQ?: InputMaybe<Scalars['felt252']['input']>;
+  size?: InputMaybe<Scalars['u8']['input']>;
+  sizeEQ?: InputMaybe<Scalars['u8']['input']>;
+  sizeGT?: InputMaybe<Scalars['u8']['input']>;
+  sizeGTE?: InputMaybe<Scalars['u8']['input']>;
+  sizeLT?: InputMaybe<Scalars['u8']['input']>;
+  sizeLTE?: InputMaybe<Scalars['u8']['input']>;
+  sizeNEQ?: InputMaybe<Scalars['u8']['input']>;
+  structure?: InputMaybe<Scalars['u8']['input']>;
+  structureEQ?: InputMaybe<Scalars['u8']['input']>;
+  structureGT?: InputMaybe<Scalars['u8']['input']>;
+  structureGTE?: InputMaybe<Scalars['u8']['input']>;
+  structureLT?: InputMaybe<Scalars['u8']['input']>;
+  structureLTE?: InputMaybe<Scalars['u8']['input']>;
+  structureNEQ?: InputMaybe<Scalars['u8']['input']>;
+  token_id?: InputMaybe<Scalars['u128']['input']>;
+  token_idEQ?: InputMaybe<Scalars['u128']['input']>;
+  token_idGT?: InputMaybe<Scalars['u128']['input']>;
+  token_idGTE?: InputMaybe<Scalars['u128']['input']>;
+  token_idLT?: InputMaybe<Scalars['u128']['input']>;
+  token_idLTE?: InputMaybe<Scalars['u128']['input']>;
+  token_idNEQ?: InputMaybe<Scalars['u128']['input']>;
+};
+
 export type Metadata = {
   __typename?: 'Metadata';
   id?: Maybe<Scalars['ID']['output']>;
@@ -109,7 +327,7 @@ export type ModelEdge = {
   node?: Maybe<Model>;
 };
 
-export type ModelUnion = Moves | Position;
+export type ModelUnion = Map | Moves | Position;
 
 export type Moves = {
   __typename?: 'Moves';
@@ -209,6 +427,7 @@ export type Query = {
   entities?: Maybe<EntityConnection>;
   entity: Entity;
   events?: Maybe<EventConnection>;
+  mapModels?: Maybe<MapConnection>;
   metadata: Metadata;
   metadatas?: Maybe<MetadataConnection>;
   model: Model;
@@ -245,6 +464,18 @@ export type QueryEventsArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type QueryMapModelsArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order?: InputMaybe<MapOrder>;
+  where?: InputMaybe<MapWhereInput>;
 };
 
 
@@ -400,7 +631,7 @@ export type Vec2 = {
 export type GetEntitiesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetEntitiesQuery = { __typename?: 'Query', entities?: { __typename?: 'EntityConnection', edges?: Array<{ __typename?: 'EntityEdge', node?: { __typename?: 'Entity', keys?: Array<string | null> | null, models?: Array<{ __typename: 'Moves', remaining?: any | null, last_direction?: any | null } | { __typename: 'Position', vec?: { __typename?: 'Vec2', x?: any | null, y?: any | null } | null } | null> | null } | null } | null> | null } | null };
+export type GetEntitiesQuery = { __typename?: 'Query', entities?: { __typename?: 'EntityConnection', edges?: Array<{ __typename?: 'EntityEdge', node?: { __typename?: 'Entity', keys?: Array<string | null> | null, models?: Array<{ __typename: 'Map' } | { __typename: 'Moves', remaining?: any | null, last_direction?: any | null } | { __typename: 'Position', vec?: { __typename?: 'Vec2', x?: any | null, y?: any | null } | null } | null> | null } | null } | null> | null } | null };
 
 
 export const GetEntitiesDocument = gql`
