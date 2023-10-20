@@ -4,10 +4,9 @@ mod models {
     mod direction;
     mod cc_map;
 }
+mod actions;
 
 mod systems {
-    mod with_decorator;
-    mod raw_contract;
     mod cc;
 }
 
