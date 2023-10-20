@@ -8,7 +8,7 @@ import { setComponentsFromGraphQLEntities } from '@dojoengine/utils';
 function App() {
   const {
     setup: {
-      systemCalls: { spawn, move },
+      systemCalls: { spawn, move, mint },
       components,
       network: { graphSdk, contractComponents }
     },
@@ -57,6 +57,8 @@ function App() {
       </div>
       <div className="card">
         <button onClick={() => spawn(account)}>Spawn</button>
+        <button onClick={() => mint(account)}>Mint</button>
+
         <div>Moves Left: {moves ? `${moves['remaining']}` : 'Need to Spawn'}</div>
         <div>Position: {position ? `${position.vec['x']}, ${position.vec['y']}` : 'Need to Spawn'}</div>
       </div>
