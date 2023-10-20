@@ -88,7 +88,9 @@ export function createSystemCalls(
     const mint = async (signer:Account)=>{
 
         try {
-            const tx = await execute(signer, "cc", "mint", []);
+            const tx = await execute(signer, "cc", "mint", [
+
+            ]);
             setComponentsFromEvents(contractComponents,
                 getEvents(
                     await signer.waitForTransaction(tx.transaction_hash,
@@ -102,10 +104,29 @@ export function createSystemCalls(
         }
     }
 
+    const generate = async (signer:Account)=>{
+
+        try {
+            const tx = await execute(signer, "cc", "generate", [1,0]);
+            setComponentsFromEvents(contractComponents,
+                getEvents(
+                    await signer.waitForTransaction(tx.transaction_hash,
+                        { retryInterval: 100 }
+                    )
+                )
+            );
+
+        } catch (e) {
+            console.log(e)
+        }
+
+    }
+
     return {
         spawn,
         move,
-        mint
+        mint,
+        generate
     };
 }
 

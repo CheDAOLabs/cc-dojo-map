@@ -8,9 +8,9 @@ import { setComponentsFromGraphQLEntities } from '@dojoengine/utils';
 function App() {
   const {
     setup: {
-      systemCalls: { spawn, move, mint },
+      systemCalls: { spawn, move, mint ,generate},
       components,
-      network: { graphSdk, contractComponents }
+      network: {entity,entities, graphSdk, contractComponents }
     },
     account: { create, list, select, account, isDeploying }
   } = useDojo();
@@ -32,6 +32,7 @@ function App() {
     const fetchData = async () => {
       try {
         const { data } = await getEntities();
+        console.log("data",data)
         if (data && data.entities) {
           setComponentsFromGraphQLEntities(contractComponents, data.entities.edges);
         }
@@ -58,11 +59,22 @@ function App() {
       <div className="card">
         <button onClick={() => spawn(account)}>Spawn</button>
         <button onClick={() => mint(account)}>Mint</button>
+        <button onClick={() => generate(account)}>Generate</button>
+        <button onClick={()=>async ()=>{
+
+        }}>Get 1</button>
 
         <div>Moves Left: {moves ? `${moves['remaining']}` : 'Need to Spawn'}</div>
         <div>Position: {position ? `${position.vec['x']}, ${position.vec['y']}` : 'Need to Spawn'}</div>
       </div>
-      <div className="card">
+                       const tx = await execute(account, "actions", 'spawn', []);
+                    setComponentsFromEvents(contractComponents,
+                        getEvents(
+                            await account.waitForTransaction(tx.transaction_hash,
+                                { retryInterval: 100 }
+                            )
+                        )
+                    );assName="card">
         <button onClick={() => move(account, Direction.Up)}>Move Up</button> <br />
         <button onClick={() => move(account, Direction.Left)}>Move Left</button>
         <button onClick={() => move(account, Direction.Right)}>Move Right</button> <br />
