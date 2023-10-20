@@ -60,21 +60,16 @@ function App() {
         <button onClick={() => spawn(account)}>Spawn</button>
         <button onClick={() => mint(account)}>Mint</button>
         <button onClick={() => generate(account)}>Generate</button>
-        <button onClick={()=>async ()=>{
+          <button onClick={async()=>{
+              let a = await entity('Map',{keys:[1]});
+              console.log("a",a);
+          }}>get 1</button>
 
-        }}>Get 1</button>
 
         <div>Moves Left: {moves ? `${moves['remaining']}` : 'Need to Spawn'}</div>
         <div>Position: {position ? `${position.vec['x']}, ${position.vec['y']}` : 'Need to Spawn'}</div>
       </div>
-                       const tx = await execute(account, "actions", 'spawn', []);
-                    setComponentsFromEvents(contractComponents,
-                        getEvents(
-                            await account.waitForTransaction(tx.transaction_hash,
-                                { retryInterval: 100 }
-                            )
-                        )
-                    );assName="card">
+      <div className="card">
         <button onClick={() => move(account, Direction.Up)}>Move Up</button> <br />
         <button onClick={() => move(account, Direction.Left)}>Move Left</button>
         <button onClick={() => move(account, Direction.Right)}>Move Right</button> <br />
