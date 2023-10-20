@@ -9,6 +9,11 @@ query getEntities {
             remaining
             last_direction
           }
+          ... on Map{
+            token_id
+            size
+            owner
+          }
           ... on Position {
             vec {
               x
