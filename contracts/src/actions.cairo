@@ -58,7 +58,7 @@ mod actions {
                         player, remaining: 100, last_direction: Direction::None(())
                     },
                     Position {
-                        player, vec: Vec2 { x:1, y: 1 }
+                        player, vec: Vec2 { x:4, y: 4 }
                     },
                 )
             );

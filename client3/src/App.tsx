@@ -319,7 +319,6 @@ function App() {
     const onChangeGTokenId = async (value: number) => {
         console.log('changed', value);
         setGTokenId(value);
-        await loadMap(gTokenId)
     };
 
     const generateToken = async (account: any) => {
