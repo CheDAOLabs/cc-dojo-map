@@ -57,7 +57,7 @@ mod cc {
     use Dungeons::{DungeonDojo, Name};
     use super::CCInterface;
     use starknet::{get_caller_address, ContractAddress};
-    use cc_dojo_map::models::cc_map::Map;
+    use cc_dojo_map::models::cc_map::{Map, SVG};
 
     // ------------------------------------- event -------------------------------------
 
@@ -72,7 +72,9 @@ mod cc {
     struct Svg {
         #[key]
         Topic: felt252,
+        #[key]
         Index: u128,
+        #[key]
         Content: felt252
     }
 
