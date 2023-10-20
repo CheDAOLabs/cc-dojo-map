@@ -77,15 +77,7 @@ impl Vec2Impl of Vec2Trait {
     }
 }
 
-#[derive(Component, Copy, Drop, Serde, SerdeLen)]
-struct CC {
-    #[key]
-    player: ContractAddress,
-    size: u128,
-    layout_first: felt252,
-    layout_second: felt252,
-    layout_third: felt252,
-}
+
 
 #[cfg(test)]
 mod tests {

@@ -1,5 +1,5 @@
 use dojo::world::{IWorldDispatcher, IWorldDispatcherTrait};
-use cc_dojo_map::models::{Direction};
+use cc_dojo_map::models::direction::{Direction};
 
 // trait: specify functions to implement
 #[starknet::interface]
@@ -14,7 +14,7 @@ trait IPlayerActions<TContractState> {
 mod player_actions_external {
     use starknet::{ContractAddress, get_caller_address};
     use dojo::world::{IWorldDispatcher, IWorldDispatcherTrait};
-    use cc_dojo_map::models::{Position, Moves, Direction, Vec2};
+    use cc_dojo_map::models::direction::{Position, Moves, Direction, Vec2};
     use cc_dojo_map::utils::next_position;
     use super::IPlayerActions;
 
@@ -74,8 +74,8 @@ mod tests {
     use dojo::world::{IWorldDispatcher, IWorldDispatcherTrait};
     use dojo::test_utils::{spawn_test_world, deploy_contract};
 
-    use cc_dojo_map::models::{position, moves};
-    use cc_dojo_map::models::{Position, Moves, Direction, Vec2};
+    use cc_dojo_map::models::direction::{position, moves};
+    use cc_dojo_map::models::direction::{Position, Moves, Direction, Vec2};
 
     use super::{
         IPlayerActionsDispatcher, IPlayerActionsDispatcherTrait,
