@@ -114,6 +114,9 @@ function App() {
         if (mapData.length == 0) {
             return rowString;
         }
+        if (!position.vec) {
+            return rowString;
+        }
         if (!position.vec['y']) {
             return rowString;
         }
@@ -216,7 +219,18 @@ function App() {
     }
 
     const findMapFromId = (id) => {
-        return maps.at(id - 1)//todo
+
+        let hex ='0x'+ id.toString(16);
+
+        console.log(hex); // Output: ff
+
+        for (let i = 0; i < maps.length; i++) {
+            let map = maps[i];
+            if (map.token_id === hex) {
+                return map
+            }
+        }
+
     }
 
     // use graphql to current state data
@@ -331,7 +345,7 @@ function App() {
                 <button onClick={() => mint(account)}>Mint</button>
 
                 <div>Moves Left: {moves ? `${moves['remaining']}` : 'Need to Spawn'}</div>
-                <div>Position: {position ? `${position.vec['x']}, ${position.vec['y']}` : 'Need to Spawn'}</div>
+                <div>Position: {(position && position.vec && position.vec['x'] && position.vec['y']) ? `${position.vec['x']}, ${position.vec['y']}` : 'Need to Spawn'}</div>
             </div>
 
 
@@ -398,6 +412,14 @@ function App() {
                     <button onClick={() => generateToken(account)}>Generate</button>
 
                 </div>
+                <br/>
+                <br/>
+                <div>
+                    {maps.map((map, index) => (
+                        <li key={index}>{map.token_id}</li>
+                    ))}
+                </div>
+
 
                 <br/>
                 <br/>
