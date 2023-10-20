@@ -631,7 +631,7 @@ export type Vec2 = {
 export type GetEntitiesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetEntitiesQuery = { __typename?: 'Query', entities?: { __typename?: 'EntityConnection', edges?: Array<{ __typename?: 'EntityEdge', node?: { __typename?: 'Entity', keys?: Array<string | null> | null, models?: Array<{ __typename: 'Map', token_id?: any | null, size?: any | null, owner?: any | null } | { __typename: 'Moves', remaining?: any | null, last_direction?: any | null } | { __typename: 'Position', vec?: { __typename?: 'Vec2', x?: any | null, y?: any | null } | null } | null> | null } | null } | null> | null } | null };
+export type GetEntitiesQuery = { __typename?: 'Query', entities?: { __typename?: 'EntityConnection', edges?: Array<{ __typename?: 'EntityEdge', node?: { __typename?: 'Entity', keys?: Array<string | null> | null, models?: Array<{ __typename: 'Map', token_id?: any | null, size?: any | null, environment?: any | null, structure?: any | null, legendary?: any | null, layout1?: any | null, layout2?: any | null, layout3?: any | null, doors1?: any | null, doors2?: any | null, doors3?: any | null, points1?: any | null, points2?: any | null, points3?: any | null, affinity?: any | null, dungeon_name1?: any | null, dungeon_name2?: any | null, dungeon_name3?: any | null, dungeon_name4?: any | null, dungeon_name5?: any | null, owner?: any | null } | { __typename: 'Moves', remaining?: any | null, last_direction?: any | null } | { __typename: 'Position', vec?: { __typename?: 'Vec2', x?: any | null, y?: any | null } | null } | null> | null } | null } | null> | null } | null };
 
 
 export const GetEntitiesDocument = gql`
@@ -649,6 +649,24 @@ export const GetEntitiesDocument = gql`
           ... on Map {
             token_id
             size
+            environment
+            structure
+            legendary
+            layout1
+            layout2
+            layout3
+            doors1
+            doors2
+            doors3
+            points1
+            points2
+            points3
+            affinity
+            dungeon_name1
+            dungeon_name2
+            dungeon_name3
+            dungeon_name4
+            dungeon_name5
             owner
           }
           ... on Position {
