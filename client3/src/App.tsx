@@ -1,6 +1,7 @@
 import {useDojo} from './DojoContext';
 import {Direction,} from './dojo/createSystemCalls'
 import {useComponentValue} from "@latticexyz/react";
+// @ts-ignore
 import {Entity} from '@latticexyz/recs';
 import {useEffect, useState} from 'react';
 import {setComponentsFromGraphQLEntities} from '@dojoengine/utils';
@@ -69,7 +70,7 @@ function App() {
     const entityId = account.address.toString();
 
     // get current component values
-    const position = useComponentValue(components.Position, entityId as Entity);
+    const position = useComponentValue(components.Position, entityId as Entity) as any;
     const moves = useComponentValue(components.Moves, entityId as Entity);
 
 

@@ -104,7 +104,7 @@ export function createSystemCalls(
         }
     }
 
-    const generate = async (signer:Account,tokenId)=>{
+    const generate = async (signer:Account,tokenId:any)=>{
 
         try {
             const tx = await execute(signer, "cc", "generate", [tokenId,0]);
