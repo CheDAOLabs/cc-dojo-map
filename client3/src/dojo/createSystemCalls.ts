@@ -30,7 +30,7 @@ export function createSystemCalls(
         });
 
         try {
-            const tx = await execute(signer, "actions", 'spawn', []);
+            const tx = await execute(signer, "player_actions", 'spawn', []);
             setComponentsFromEvents(contractComponents,
                 getEvents(
                     await signer.waitForTransaction(tx.transaction_hash,
@@ -65,7 +65,7 @@ export function createSystemCalls(
         });
 
         try {
-            const tx = await execute(signer, "actions", "move", [direction]);
+            const tx = await execute(signer, "player_actions", "move", [direction]);
             setComponentsFromEvents(contractComponents,
                 getEvents(
                     await signer.waitForTransaction(tx.transaction_hash,
