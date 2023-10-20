@@ -271,6 +271,9 @@ function App() {
             });
             return;
         }
+        if(!position.vec){
+            return;
+        }
         setLoading(true);
         if (direction == Direction.Up) {
             if (isCollision(position.vec['x'], position.vec['y'] - 1)) {
