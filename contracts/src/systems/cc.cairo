@@ -43,6 +43,7 @@ trait CCInterface<TContractState> {
 // }
 
 // ---------------------------------------- contract --------------------------------------
+
 #[dojo::contract]
 mod cc {
     // events would be emitted twice
@@ -63,11 +64,26 @@ mod cc {
     #[event]
     #[derive(Drop, starknet::Event)]
     enum Event {
-        ForTest: ForTest
+        ForTest: ForTest,
+        Svg: Svg
+    }
+
+    #[derive(Drop, starknet::Event)]
+    struct Svg {
+        #[key]
+        Topic: felt252,
+        Index: u128,
+        Content: felt252
     }
 
     #[derive(Drop, starknet::Event)]
     struct ForTest {
+        #[key]
+        One: u128,
+        #[key]
+        Two: u128,
+        #[key]
+        Three: u128,
         #[key]
         Param: felt252
     }
@@ -82,13 +98,20 @@ mod cc {
 
     // ------------------------------------- implement ----------------------------------
 
-    fn emit(ref self: ContractState, param: felt252) {
-        let world = self.world_dispatcher.read();
-        emit!(world, ForTest { Param: param });
-    }
-
     fn get_world(self: @ContractState) -> IWorldDispatcher {
         self.world_dispatcher.read()
+    }
+
+    #[external(v0)]
+    fn test(ref self: ContractState) {
+        CCImpl::mint(ref self);
+
+        CCImpl::generate(@self, 1);
+
+        // CCImpl::svg(@self, 1);
+
+        let map: Map = get!(get_world(@self), 1, (Map));
+        emit!(get_world(@self), ForTest { One: 1, Two: 2, Three: 3, Param: map.layout1 });
     }
 
     #[external(v0)]
@@ -106,7 +129,7 @@ mod cc {
             let mut state = Dungeons::unsafe_new_contract_state();
             let dungeon = Dungeons::generate_dungeon_dojo(@state, token_id);
 
-            let world = self.world_dispatcher.read();
+            let world = get_world(self);
             set!(
                 world,
                 Map {
@@ -140,11 +163,13 @@ mod cc {
             let mut state = Dungeons::unsafe_new_contract_state();
             let mut svg = Dungeons::get_svg(@state, token_id);
 
-            let world = self.world_dispatcher.read();
+            let world = get_world(self);
+            let mut index = 0;
             loop {
                 match svg.pop_front() {
                     Option::Some(part) => {
-                        emit!(world, ForTest { Param: part });
+                        emit!(world, Svg { Topic: 'svg', Index: index, Content: part });
+                        index += 1;
                     },
                     Option::None(_) => {
                         break;
