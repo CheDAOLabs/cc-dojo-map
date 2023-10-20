@@ -77,534 +77,6 @@ function App() {
     const [entities, setEntities] = useState(null);
     const [maps, setMaps] = useState([]);
     const [mapData, setMapData] = useState([
-        [
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X"
-        ],
-        [
-            "X",
-            "X",
-            "X",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X"
-        ],
-        [
-            "X",
-            "X",
-            "X",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X"
-        ],
-        [
-            "X",
-            "X",
-            "X",
-            "X",
-            " ",
-            " ",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X"
-        ],
-        [
-            "X",
-            "X",
-            "X",
-            "X",
-            " ",
-            " ",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X"
-        ],
-        [
-            "X",
-            "X",
-            "X",
-            " ",
-            " ",
-            " ",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X"
-        ],
-        [
-            "X",
-            "X",
-            "X",
-            " ",
-            " ",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X"
-        ],
-        [
-            "X",
-            "X",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            "X",
-            "X",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X"
-        ],
-        [
-            "X",
-            "X",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            "X",
-            "X",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X"
-        ],
-        [
-            "X",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            "X",
-            "X",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            "X",
-            "X",
-            "X",
-            "X"
-        ],
-        [
-            "X",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            "X",
-            "X",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            "X",
-            "X",
-            " ",
-            "X",
-            "X",
-            "X",
-            "X"
-        ],
-        [
-            "X",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            "X",
-            "X",
-            "X",
-            "X",
-            " ",
-            "X",
-            "X",
-            "X",
-            "X",
-            " ",
-            "X",
-            "X",
-            "X",
-            "X"
-        ],
-        [
-            "X",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            "X",
-            "X",
-            "X",
-            "X",
-            " ",
-            "X",
-            "X",
-            "X",
-            "X",
-            " ",
-            "X",
-            "X",
-            "X",
-            "X"
-        ],
-        [
-            "X",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            "X",
-            "X",
-            "X",
-            "X",
-            " ",
-            "X",
-            "X",
-            "X",
-            "X",
-            " ",
-            "X",
-            "X",
-            "X",
-            "X"
-        ],
-        [
-            "X",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            "X",
-            "X",
-            "X",
-            "X",
-            " ",
-            "X",
-            "X",
-            "X",
-            "X",
-            " ",
-            "X",
-            "X",
-            "X",
-            "X"
-        ],
-        [
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            " ",
-            " ",
-            "X",
-            "X",
-            "X",
-            "X",
-            " ",
-            "X",
-            "X",
-            "X",
-            " ",
-            " ",
-            "X",
-            "X",
-            "X",
-            "X"
-        ],
-        [
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            "X",
-            "X",
-            "X",
-            "X"
-        ],
-        [
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            " ",
-            " ",
-            "X",
-            "X",
-            "X",
-            "X",
-            " ",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X"
-        ],
-        [
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            " ",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X"
-        ],
-        [
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X"
-        ],
-        [
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X"
-        ],
-        [
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X",
-            "X"
-        ]
     ]);
     const [tokenId, setTokenId] = useState(1);
     const [mapName, setMapName] = useState("loading...")
@@ -614,8 +86,12 @@ function App() {
         setLoading(true);
         console.log("maps", maps)
         let map = findMapFromId(token_id);
+        if(!map){
+            return;
+        }
         console.log("map", map)
-        setOwner(map.owner);
+        const owner = map.owner;
+        setOwner(owner.substring(0, 5) + '...' + owner.substring(owner.length - 5, owner.length));
         // const name = decode_string([map.]);
 
         const map_arr = decode_map({
@@ -633,6 +109,9 @@ function App() {
     const render = () => {
         let rowString = ""
         if (!position) {
+            return rowString;
+        }
+        if(mapData.length==0){
             return rowString;
         }
         let dungeon = JSON.parse(JSON.stringify(mapData));
@@ -716,7 +195,7 @@ function App() {
 
     useEffect(() => {
         loadMap(tokenId);
-    }, []);
+    }, [maps]);
 
     const findMapFromNodes = (edges) => {
         let result = [];
@@ -749,6 +228,8 @@ function App() {
                 let m = findMapFromNodes(edges);
                 if (m) {
                     setMaps(m);
+                    console.log("setmap",m.length)
+                    await loadMap(1);
                 }
 
                 if (data && data.entities) {
@@ -775,14 +256,14 @@ function App() {
         }
         setLoading(true);
         if (direction == Direction.Up) {
-            if (isCollision(position.x, position.y - 1)) {
+            if (isCollision(position.vec['x'], position.vec['y'] - 1)) {
                 console.log("is collision")
                 setLoading(false);
                 return
             }
         }
         if (direction == Direction.Down) {
-            if (isCollision(position.x, position.y + 1)) {
+            if (isCollision(position.vec['x'], position.vec['y'] + 1)) {
                 console.log("is collision")
                 setLoading(false);
                 return
@@ -790,7 +271,7 @@ function App() {
         }
 
         if (direction == Direction.Left) {
-            if (isCollision(position.x - 1, position.y)) {
+            if (isCollision(position.vec['x'] - 1, position.vec['y'])) {
                 console.log("is collision")
                 setLoading(false);
                 return
@@ -798,7 +279,7 @@ function App() {
         }
 
         if (direction == Direction.Right) {
-            if (isCollision(position.x + 1, position.y)) {
+            if (isCollision(position.vec['x'] + 1, position.vec['y'])) {
                 console.log("is collision")
                 setLoading(false);
                 return
@@ -855,19 +336,19 @@ function App() {
 
                 <div className="container">
                     <div className="div1">
-                        {/*{loading ? (<div style={{*/}
-                        {/*    position: "relative",*/}
-                        {/*    textAlign: "center",*/}
-                        {/*    width: "650px",*/}
-                        {/*    height: "650px",*/}
-                        {/*    backgroundColor: "rgba(0, 0, 0, 0.5)"*/}
-                        {/*}}>*/}
-                        {/*    <Spin style={{*/}
-                        {/*        position: "absolute",*/}
-                        {/*        top: "50%",*/}
-                        {/*        left: "50%",*/}
-                        {/*        transform: "translate(-50%,-50%)"*/}
-                        {/*    }}/></div>) : <></>}*/}
+                        {loading ? (<div style={{
+                            position: "relative",
+                            textAlign: "center",
+                            width: "650px",
+                            height: "650px",
+                            backgroundColor: "rgba(0, 0, 0, 0.5)"
+                        }}>
+                            <Spin style={{
+                                position: "absolute",
+                                top: "50%",
+                                left: "50%",
+                                transform: "translate(-50%,-50%)"
+                            }}/></div>) : <></>}
 
                     </div>
                     <div className="div2">
