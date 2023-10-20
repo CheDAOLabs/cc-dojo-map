@@ -196,7 +196,7 @@ function App() {
         return () => {
             window.removeEventListener('keydown', handleKeyDown);
         };
-    }, [position]);
+    }, []);
 
 
     useEffect(() => {
