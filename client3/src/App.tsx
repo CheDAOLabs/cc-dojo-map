@@ -612,6 +612,20 @@ function App() {
 
     const loadMap = async (token_id) => {
         setLoading(true);
+        console.log("maps", maps)
+        let map = findMapFromId(token_id);
+        console.log("map", map)
+        setOwner(map.owner);
+        // const name = decode_string([map.]);
+
+        const map_arr = decode_map({
+            first: map.layout1,
+            second: map.layout2,
+            third: map.layout3
+        }, map.size);
+
+        setMapData(map_arr);
+        // setMapName()
 
         setLoading(false)
     }
@@ -704,6 +718,25 @@ function App() {
         loadMap(tokenId);
     }, []);
 
+    const findMapFromNodes = (edges) => {
+        let result = [];
+        if (edges.length == 0) {
+            return result;
+        }
+        for (let i = 0; i < edges.length; i++) {
+            let edge = edges[i];
+            let models = edge.node.models;
+            if (models.length == 1) {
+                result.push(models[0]);
+            }
+        }
+        return result;
+    }
+
+    const findMapFromId = (id) => {
+        return maps.at(id - 1)//todo
+    }
+
     // use graphql to current state data
     useEffect(() => {
         if (!entityId) return;
@@ -711,7 +744,13 @@ function App() {
         const fetchData = async () => {
             try {
                 const {data} = await getEntities();
-                console.log("data", data)
+                console.log("entity_data", data)
+                let edges = data.entities?.edges;
+                let m = findMapFromNodes(edges);
+                if (m) {
+                    setMaps(m);
+                }
+
                 if (data && data.entities) {
                     setComponentsFromGraphQLEntities(contractComponents, data.entities.edges);
                 }
@@ -772,11 +811,18 @@ function App() {
 
     const {darkAlgorithm} = theme;
 
+    const onChangeTokenId = async (value: number) => {
+        console.log('changed', value);
+        setTokenId(value);
+        await loadMap(value)
+    };
+
     return (
         <ConfigProvider
             theme={{
                 algorithm: darkAlgorithm,
-            }}>            <button onClick={create}>{isDeploying ? "deploying burner" : "create burner"}</button>
+            }}>
+            <button onClick={create}>{isDeploying ? "deploying burner" : "create burner"}</button>
             <div className="card">
                 select signer:{" "}
                 <select onChange={e => select(e.target.value)}>
@@ -793,14 +839,75 @@ function App() {
                 <div>Moves Left: {moves ? `${moves['remaining']}` : 'Need to Spawn'}</div>
                 <div>Position: {position ? `${position.vec['x']}, ${position.vec['y']}` : 'Need to Spawn'}</div>
             </div>
-            <div className="card">
-                <button onClick={() => move(account, Direction.Up)}>Move Up</button>
-                <br/>
-                <button onClick={() => move(account, Direction.Left)}>Move Left</button>
-                <button onClick={() => move(account, Direction.Right)}>Move Right</button>
-                <br/>
-                <button onClick={() => move(account, Direction.Down)}>Move Down</button>
+
+
+            <div className="card"
+                 style={{
+                     padding: 0,
+                     backgroundColor: "black",
+                     width: "650px",
+                     height: "650px",
+                     float: "left",
+                     display: "flex",
+                     alignItems: "center",
+                     alignContent: "center"
+                 }}>
+
+                <div className="container">
+                    <div className="div1">
+                        {/*{loading ? (<div style={{*/}
+                        {/*    position: "relative",*/}
+                        {/*    textAlign: "center",*/}
+                        {/*    width: "650px",*/}
+                        {/*    height: "650px",*/}
+                        {/*    backgroundColor: "rgba(0, 0, 0, 0.5)"*/}
+                        {/*}}>*/}
+                        {/*    <Spin style={{*/}
+                        {/*        position: "absolute",*/}
+                        {/*        top: "50%",*/}
+                        {/*        left: "50%",*/}
+                        {/*        transform: "translate(-50%,-50%)"*/}
+                        {/*    }}/></div>) : <></>}*/}
+
+                    </div>
+                    <div className="div2">
+                        <div style={{display: "flex", alignItems: "center", height: "650px"}}>
+                            <pre style={{}} className=" MapPre" dangerouslySetInnerHTML={{__html: render()}}></pre>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
+
+            <div className="card" style={{"float": "right"}}>
+
+                <div>
+
+                    <p>tokenId: <InputNumber disabled={false} min={1} max={10000} defaultValue={1}
+                                             value={tokenId}
+                                             onChange={onChangeTokenId}/></p>
+
+                    <p>name: {mapName}</p>
+                    <p>owner: {owner}</p>
+                </div>
+
+                <br/>
+                <br/>
+
+                <br/>
+                <br/>
+
+                <Button onClick={() => cc_move(account, Direction.Up)}>Move Up
+                </Button>
+                <br/>
+                <Button onClick={() => cc_move(account, Direction.Left)}>Move Left</Button>
+                <Button onClick={() => cc_move(account, Direction.Right)}>Move Right</Button>
+                <br/>
+                <Button onClick={() => cc_move(account, Direction.Down)}>Move Down</Button>
+            </div>
+
+
         </ConfigProvider>
     );
 }

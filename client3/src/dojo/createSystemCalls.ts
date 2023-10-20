@@ -107,7 +107,7 @@ export function createSystemCalls(
     const generate = async (signer:Account)=>{
 
         try {
-            const tx = await execute(signer, "cc", "generate", [1,0]);
+            const tx = await execute(signer, "cc", "generate", [2,0]);
             setComponentsFromEvents(contractComponents,
                 getEvents(
                     await signer.waitForTransaction(tx.transaction_hash,
