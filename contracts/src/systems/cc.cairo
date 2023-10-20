@@ -72,7 +72,9 @@ mod cc {
     struct Svg {
         #[key]
         Topic: felt252,
+        #[key]
         Index: u128,
+        #[key]
         Content: felt252
     }
 
@@ -165,10 +167,11 @@ mod cc {
 
             let world = get_world(self);
             let mut index = 0;
+            let topic: felt252 = 'svg';
             loop {
                 match svg.pop_front() {
                     Option::Some(part) => {
-                        emit!(world, Svg { Topic: 'svg', Index: index, Content: part });
+                        emit!(world, Svg { Topic: topic, Index: index, Content: part });
                         index += 1;
                     },
                     Option::None(_) => {
