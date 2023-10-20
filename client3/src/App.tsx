@@ -114,6 +114,10 @@ function App() {
         if(mapData.length==0){
             return rowString;
         }
+        if(!position.vec['y'])
+        {
+            return rowString;
+        }
         let dungeon = JSON.parse(JSON.stringify(mapData));
         console.log("x,y", position.vec['x'], position.vec['y'])
         if (dungeon[0].length < position.vec['x'] || dungeon.length < position.vec['y']) {
