@@ -631,7 +631,7 @@ export type Vec2 = {
 export type GetEntitiesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetEntitiesQuery = { __typename?: 'Query', entities?: { __typename?: 'EntityConnection', edges?: Array<{ __typename?: 'EntityEdge', node?: { __typename?: 'Entity', keys?: Array<string | null> | null, models?: Array<{ __typename: 'Map' } | { __typename: 'Moves', remaining?: any | null, last_direction?: any | null } | { __typename: 'Position', vec?: { __typename?: 'Vec2', x?: any | null, y?: any | null } | null } | null> | null } | null } | null> | null } | null };
+export type GetEntitiesQuery = { __typename?: 'Query', entities?: { __typename?: 'EntityConnection', edges?: Array<{ __typename?: 'EntityEdge', node?: { __typename?: 'Entity', keys?: Array<string | null> | null, models?: Array<{ __typename: 'Map', token_id?: any | null, size?: any | null, owner?: any | null } | { __typename: 'Moves', remaining?: any | null, last_direction?: any | null } | { __typename: 'Position', vec?: { __typename?: 'Vec2', x?: any | null, y?: any | null } | null } | null> | null } | null } | null> | null } | null };
 
 
 export const GetEntitiesDocument = gql`
@@ -645,6 +645,11 @@ export const GetEntitiesDocument = gql`
           ... on Moves {
             remaining
             last_direction
+          }
+          ... on Map {
+            token_id
+            size
+            owner
           }
           ... on Position {
             vec {
