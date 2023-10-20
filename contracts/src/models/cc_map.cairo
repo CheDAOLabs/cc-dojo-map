@@ -25,5 +25,6 @@ struct Map {
     dungeon_name2: felt252,
     dungeon_name3: felt252,
     dungeon_name4: felt252,
-    dungeon_name5: felt252
+    dungeon_name5: felt252,
+    owner: ContractAddress,
 }
