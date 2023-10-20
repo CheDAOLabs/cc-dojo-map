@@ -85,9 +85,27 @@ export function createSystemCalls(
 
     };
 
+    const mint = async (signer:Account)=>{
+
+        try {
+            const tx = await execute(signer, "cc", "mint", []);
+            setComponentsFromEvents(contractComponents,
+                getEvents(
+                    await signer.waitForTransaction(tx.transaction_hash,
+                        { retryInterval: 100 }
+                    )
+                )
+            );
+
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
     return {
         spawn,
-        move
+        move,
+        mint
     };
 }
 
