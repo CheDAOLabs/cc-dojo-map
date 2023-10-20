@@ -1,4 +1,4 @@
-use cc_dojo_map::models::{Position, Direction};
+use cc_dojo_map::models::direction::{Position, Direction};
 
 fn next_position(mut position: Position, direction: Direction) -> Position {
     match direction {
