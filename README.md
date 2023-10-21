@@ -115,4 +115,5 @@ http://localhost:5173/
 | Name | Version | Compatibility Dojo version
 | --- | --- | --- |
 |cc-dojo-map|v0.1.0|v0.2.3|
-|cc-dojo-map|v0.2.0|v0.3.0|
+|cc-dojo-map|v0.2.0|v0.3.0-rc9|
+|cc-dojo-map|v0.2.1|v0.3.0|
