@@ -110,10 +110,18 @@ yarn dev
 http://localhost:5173/
 ```
 
-### Version check
+### Project Structure
 
-| Name | Version | Compatibility Dojo version
-| --- | --- | --- |
-|cc-dojo-map|v0.1.0|v0.2.3|
-|cc-dojo-map|v0.2.0|v0.3.0-rc9|
-|cc-dojo-map|v0.2.1|v0.3.0|
+| Name | Description |
+| --- | --- |
+|client| for testnet|
+|client3| for katana|
+|contracts|contracts|
+
+### Version Check
+
+| Name | Version | Compatibility Dojo version | Coments
+| --- | --- | --- | --- |
+|cc-dojo-map|v0.1.0|v0.2.3| generate C&C by connecting to testnet via client
+|cc-dojo-map|v0.2.0|v0.3.0-rc9| update dojo to rc9
+|cc-dojo-map|v0.2.1|v0.3.0| more C&C features in Dojo release version
