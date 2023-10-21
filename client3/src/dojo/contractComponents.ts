@@ -38,5 +38,38 @@ export function defineContractComponents(world: World) {
                 }
             );
         })(),
+        Map: (() => {
+            const name = "Map";
+            return defineComponent(
+                world,
+                {
+                    size: RecsType.Number,
+                    environment: RecsType.Number,
+                    structure: RecsType.Number,
+                    legendary: RecsType.Number,
+                    layout1: RecsType.BigInt,
+                    layout2: RecsType.BigInt,
+                    layout3: RecsType.BigInt,
+                    doors1: RecsType.BigInt,
+                    doors2: RecsType.BigInt,
+                    doors3: RecsType.BigInt,
+                    points1: RecsType.BigInt,
+                    points2: RecsType.BigInt,
+                    points3: RecsType.BigInt,
+                    affinity: RecsType.BigInt,
+                    dungeon_name1: RecsType.BigInt,
+                    dungeon_name2: RecsType.BigInt,
+                    dungeon_name3: RecsType.BigInt,
+                    dungeon_name4: RecsType.BigInt,
+                    dungeon_name5: RecsType.BigInt,
+                },
+                {
+                    metadata: {
+                        name: name,
+                        types: ["u8", "u8", "u8", "u8", "felt252", "felt252", "felt252", "felt252", "felt252", "felt252", "felt252", "felt252", "felt252", "felt252", "felt252", "felt252", "felt252", "felt252", "felt252"],
+                    },
+                }
+            );
+        })(),
     };
 }
