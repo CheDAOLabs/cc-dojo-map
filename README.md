@@ -77,9 +77,15 @@ sozo build
 sozo migrate --name cc_dojo_map  
 ```
 
-6. Invoke the contract:
+6. Indexer
 
+```shell
+torii --world WORLD_ADDRESS
 ```
+
+7. Invoke the contract:
+
+```shell
 sozo execute CC_CONTRACT_ADDRESS test
 ```
 
