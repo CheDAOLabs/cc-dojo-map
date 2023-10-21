@@ -10,16 +10,18 @@ interface
 
 ```
 #[starknet::interface]
-trait CCInterface<TContractState> {
+trait ICryptsAndCaverns<TState> {
 
-    fn mint(ref self: TContractState);
+    fn owner_of(self: @TState, token_id: u256) -> ContractAddress;
 
-    fn generate(self: @TContractState, token_id: u256);
+    fn get_svg(self: @TState, token_id: u128) -> Array<felt252>;
 
-    fn svg(self: @TContractState, token_id: u256);
+    fn generate_dungeon(self: @TState, token_id: u128) -> DungeonSerde;
 
+    fn get_seed(self: @TState, token_id: u128) -> u256;
+
+    fn mint(ref self: TState) -> u128;
 }
-
 ```
 
 ### Components
@@ -30,7 +32,6 @@ trait CCInterface<TContractState> {
 ### Systems
 
 - Movement
-- cc
   
 ### Split into several stages
 
@@ -60,7 +61,7 @@ dojoup
 3. Start Katana:
 
 ```shell
-katana --disable-fee --invoke-max-steps 4294967295
+katana --disable-fee
 ```
 
 4. Compile the contract:
@@ -73,12 +74,6 @@ sozo build
 
 ```shell
 sozo migrate --name cc_dojo_map  
-```
-
-6. Invoke the contract:
-
-```
-sozo execute CC_CONTRACT_ADDRESS test
 ```
 
 ### build client
