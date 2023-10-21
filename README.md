@@ -12,15 +12,16 @@ interface
 #[starknet::interface]
 trait ICryptsAndCaverns<TState> {
 
-    fn owner_of(self: @TState, token_id: u256) -> ContractAddress;
+    fn owner_of(self: @TState, token_id: u256);
 
-    fn get_svg(self: @TState, token_id: u128) -> Array<felt252>;
+    fn get_svg(self: @TState, token_id: u256);
 
-    fn generate_dungeon(self: @TState, token_id: u128) -> DungeonSerde;
+    fn generate_dungeon(self: @TState, token_id: u256);
 
-    fn get_seed(self: @TState, token_id: u128) -> u256;
+    fn get_seed(self: @TState, token_id: u256);
 
-    fn mint(ref self: TState) -> u128;
+    fn mint(ref self: TState);
+
 }
 ```
 
@@ -61,7 +62,7 @@ dojoup
 3. Start Katana:
 
 ```shell
-katana --disable-fee
+katana --disable-fee --invoke-max-steps 4294967295
 ```
 
 4. Compile the contract:
@@ -74,6 +75,12 @@ sozo build
 
 ```shell
 sozo migrate --name cc_dojo_map  
+```
+
+6. Invoke the contract:
+
+```
+sozo execute CC_CONTRACT_ADDRESS test
 ```
 
 ### build client

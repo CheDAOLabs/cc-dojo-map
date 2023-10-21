@@ -1,63 +1,17 @@
 use dojo::world::{IWorldDispatcher, IWorldDispatcherTrait};
 
-// ---------------------------------------- interface -------------------------------------
-#[starknet::interface]
-trait CCInterface<TContractState> {
-    fn mint(ref self: TContractState);
-    fn generate(self: @TContractState, token_id: u256);
-    fn svg(self: @TContractState, token_id: u256);
-}
-
-// #[starknet::interface]
-// trait IERC721Enumerable<TContractState> {
-//     fn total_supply(self: @TContractState) -> u256;
-//     fn token_by_index(self: @TContractState, index: u256) -> u256;
-//     fn token_of_owner_by_index(self: @TContractState, owner: ContractAddress, index: u256) -> u256;
-// }
-
-// #[starknet::interface]
-// trait IERC721Metadata<TState> {
-//     fn name(self: @TState) -> felt252;
-//     fn symbol(self: @TState) -> felt252;
-//     fn token_uri(self: @TState, token_id: u256) -> Array<felt252>;
-// }
-
-// #[starknet::interface]
-// trait IERC721<TState> {
-//     fn balance_of(self: @TState, account: ContractAddress) -> u256;
-//     fn owner_of(self: @TState, token_id: u256) -> ContractAddress;
-//     fn transfer_from(ref self: TState, from: ContractAddress, to: ContractAddress, token_id: u256);
-//     fn safe_transfer_from(
-//         ref self: TState,
-//         from: ContractAddress,
-//         to: ContractAddress,
-//         token_id: u256,
-//         data: Span<felt252>
-//     );
-//     fn approve(ref self: TState, to: ContractAddress, token_id: u256);
-//     fn set_approval_for_all(ref self: TState, operator: ContractAddress, approved: bool);
-//     fn get_approved(self: @TState, token_id: u256) -> ContractAddress;
-//     fn is_approved_for_all(
-//         self: @TState, owner: ContractAddress, operator: ContractAddress
-//     ) -> bool;
-// }
-
 // ---------------------------------------- contract --------------------------------------
 
 #[dojo::contract]
 mod cc {
-    // events would be emitted twice
-    // that should be solved when it is done
-    // or change it in cc source code
-
     // ------------------------------------- import -------------------------------------
 
     use core::array::ArrayTrait;
     use cc_starknet::{Dungeons, utils::pack::Pack};
     use Dungeons::{DungeonDojo, Name};
-    use super::CCInterface;
     use starknet::{get_caller_address, ContractAddress};
-    use cc_dojo_map::models::cc_map::Map;
+    use cc_dojo_map::models::cc_map::{Map, Owner, Seed};
+    use cc_dojo_map::interface::ICryptsAndCaverns;
 
     // ------------------------------------- event -------------------------------------
 
@@ -106,18 +60,27 @@ mod cc {
 
     #[external(v0)]
     fn test(ref self: ContractState) {
-        CCImpl::mint(ref self);
+        //
+        CryptsAndCavernsImpl::mint(ref self);
 
-        CCImpl::generate(@self, 1);
-
-        CCImpl::svg(@self, 1);
-
+        CryptsAndCavernsImpl::generate_dungeon(@self, 1);
         let map: Map = get!(get_world(@self), 1, (Map));
         emit!(get_world(@self), ForTest { One: 1, Two: 2, Three: 3, Param: map.layout1 });
+
+        CryptsAndCavernsImpl::get_seed(@self, 1);
+        let seed: Seed = get!(get_world(@self), 1, (Seed));
+        emit!(get_world(@self), ForTest { One: 1, Two: 2, Three: 3, Param: seed.seed.low.into() });
+
+        CryptsAndCavernsImpl::owner_of(@self, 1);
+        let owner: Owner = get!(get_world(@self), 1, (Owner));
+        emit!(get_world(@self), ForTest { One: 1, Two: 2, Three: 3, Param: owner.owner.into() });
+    //
+    // CryptsAndCavernsImpl::get_svg(@self, 1);
+    //
     }
 
     #[external(v0)]
-    impl CCImpl of CCInterface<ContractState> {
+    impl CryptsAndCavernsImpl of ICryptsAndCaverns<ContractState> {
         //
         fn mint(ref self: ContractState) {
             //
@@ -126,7 +89,7 @@ mod cc {
         //
         }
 
-        fn generate(self: @ContractState, token_id: u256) {
+        fn generate_dungeon(self: @ContractState, token_id: u256) {
             //
             let mut state = Dungeons::unsafe_new_contract_state();
             let dungeon = Dungeons::generate_dungeon_dojo(@state, token_id);
@@ -161,7 +124,7 @@ mod cc {
         //
         }
 
-        fn svg(self: @ContractState, token_id: u256) {
+        fn get_svg(self: @ContractState, token_id: u256) {
             //
             let mut state = Dungeons::unsafe_new_contract_state();
             let mut svg = Dungeons::get_svg(@state, token_id);
@@ -182,5 +145,24 @@ mod cc {
             }
         //
         }
+
+        fn owner_of(self: @ContractState, token_id: u256) {
+            //
+            let mut state = Dungeons::unsafe_new_contract_state();
+            let owner = Dungeons::ERC721Impl::owner_of(@state, token_id);
+
+            set!(get_world(self), Owner { token_id: token_id.try_into().unwrap(), owner: owner });
+        //
+        }
+
+        fn get_seed(self: @ContractState, token_id: u256) {
+            //
+            let seed = Dungeons::get_seed(token_id);
+
+            set!(get_world(self), Seed { token_id: token_id.try_into().unwrap(), seed: seed });
+        //
+        }
+    //
     }
+//
 }
