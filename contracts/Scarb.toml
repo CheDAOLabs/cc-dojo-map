@@ -10,6 +10,8 @@ sierra-replace-ids = true
 dojo = { git = "https://github.com/dojoengine/dojo.git", tag = "v0.3.0" }
 cc_starknet = { git = "https://github.com/CheDAOLabs/cryptsandcaverns.git", tag = "v0.1.0-rc0" }
 
+[lib]
+
 [[target.dojo]]
 
 [tool.dojo]
