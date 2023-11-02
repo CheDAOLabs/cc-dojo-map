@@ -3,7 +3,7 @@ version = 1
 
 [[package]]
 name = "cc_dojo_map"
-version = "0.2.0"
+version = "0.3.2"
 dependencies = [
  "cc_starknet",
  "dojo",
@@ -11,25 +11,25 @@ dependencies = [
 
 [[package]]
 name = "cc_starknet"
-version = "0.1.0"
-source = "git+https://github.com/CheDAOLabs/cryptsandcaverns.git?tag=v0.1.0-rc0#8d6bf9618cc261a51d42d4152048d4dc09122b56"
+version = "0.1.1"
+source = "git+https://github.com/CheDAOLabs/cryptsandcaverns.git?tag=v0.1.1-rc0#0ad6a6443106e176ddc1cfd4fa0ff3e0da3b82e1"
 dependencies = [
  "openzeppelin",
 ]
 
 [[package]]
 name = "dojo"
-version = "0.3.2"
-source = "git+https://github.com/dojoengine/dojo.git?tag=v0.3.2#a0fa1ad96fb98c088be05da6178f43217891c8c6"
+version = "0.3.3"
+source = "git+https://github.com/dojoengine/dojo.git?tag=v0.3.3#3c9f109e667ca5d12739e6553fdb8261378f4ecf"
 dependencies = [
  "dojo_plugin",
 ]
 
 [[package]]
 name = "dojo_plugin"
-version = "0.3.2"
+version = "0.3.3"
 
 [[package]]
 name = "openzeppelin"
-version = "0.7.0"
-source = "git+https://github.com/OpenZeppelin/cairo-contracts.git?tag=v0.7.0#61a2505fe0c0f19b5de2b3f8dedf421ba2cff657"
+version = "0.8.0-beta.0"
+source = "git+https://github.com/OpenZeppelin/cairo-contracts.git?tag=v0.8.0-beta.0#4c95981a7178e43730f152c85a92336dc6a22d62"

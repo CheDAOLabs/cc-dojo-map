@@ -1,14 +1,14 @@
 [package]
 cairo-version = "2.2.0"
 name = "cc_dojo_map"
-version = "0.2.0"
+version = "0.3.2"
 
 [cairo]
 sierra-replace-ids = true
 
 [dependencies]
-dojo = { git = "https://github.com/dojoengine/dojo.git", tag = "v0.3.2" }
-cc_starknet = { git = "https://github.com/CheDAOLabs/cryptsandcaverns.git", tag = "v0.1.0-rc0" }
+dojo = { git = "https://github.com/dojoengine/dojo.git", tag = "v0.3.3" }
+cc_starknet = { git = "https://github.com/CheDAOLabs/cryptsandcaverns.git", tag = "v0.1.1-rc0" }
 
 [lib]
 
