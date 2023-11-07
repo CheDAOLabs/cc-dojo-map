@@ -98,7 +98,7 @@ sozo execute CC_CONTRACT_ADDRESS test
 1.Build the frontend:
 
 ```shell
-cd client
+cd client3
 yarn
 ```
 

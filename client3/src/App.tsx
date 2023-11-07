@@ -1,12 +1,12 @@
-import {useDojo} from './DojoContext';
-import {Direction,} from './dojo/createSystemCalls'
-import {useComponentValue} from "@latticexyz/react";
+import { useDojo } from './DojoContext';
+import { Direction, } from './dojo/createSystemCalls'
+import { useComponentValue } from "@latticexyz/react";
 // @ts-ignore
-import {Entity} from '@latticexyz/recs';
-import {useEffect, useState} from 'react';
-import {setComponentsFromGraphQLEntities} from '@dojoengine/utils';
-import {Button, message, ConfigProvider, theme, Input, Select, Spin, InputNumber, Steps} from 'antd';
-import {shortString} from "starknet";
+import { Entity } from '@latticexyz/recs';
+import { useEffect, useState } from 'react';
+import { setComponentsFromGraphQLEntities } from '@dojoengine/utils';
+import { Button, message, ConfigProvider, theme, Input, Select, Spin, InputNumber, Steps } from 'antd';
+import { shortString } from "starknet";
 
 const coin = "<span class='sk'>🪙</span>";
 const door = "<span class='sk'>🚪</span>"
@@ -55,22 +55,22 @@ const decode_map = (layout: any, size: any) => {
 function App() {
     const {
         setup: {
-            systemCalls: {spawn, move, mint, generate},
+            systemCalls: { spawn, move, mint, generate },
             components,
-            network: {graphSdk, contractComponents}
+            network: { graphSdk, contractComponents }
         },
-        account: {create, list, select, account, isDeploying}
+        account: { create, list, select, account, isDeploying }
     } = useDojo();
 
 
     // extract query
-    const {getEntities} = graphSdk()
+    const { getEntities } = graphSdk();
 
     // entity id - this example uses the account address as the entity id
     const entityId = account.address.toString();
 
     // get current component values
-    const position = useComponentValue(components.Position, entityId as Entity) as any;
+    const position = useComponentValue(components.Position, entityId as Entity);
     const moves = useComponentValue(components.Moves, entityId as Entity);
 
 
@@ -220,9 +220,9 @@ function App() {
 
     const findMapFromId = (id) => {
 
-        let hex ='0x'+ id.toString(16);
+        let hex = '0x' + id.toString(16);
 
-        console.log(hex); // Output: ff
+        console.log("id", hex); // Output: ff
 
         for (let i = 0; i < maps.length; i++) {
             let map = maps[i];
@@ -239,7 +239,7 @@ function App() {
 
         const fetchData = async () => {
             try {
-                const {data} = await getEntities();
+                const { data } = await getEntities();
                 console.log("entity_data", data)
                 let edges = data.entities?.edges;
                 let m = findMapFromNodes(edges);
@@ -271,7 +271,7 @@ function App() {
             });
             return;
         }
-        if(!position.vec){
+        if (!position.vec) {
             return;
         }
         setLoading(true);
@@ -310,7 +310,7 @@ function App() {
         setLoading(false);
     }
 
-    const {darkAlgorithm} = theme;
+    const { darkAlgorithm } = theme;
 
     const onChangeTokenId = async (value: number) => {
         console.log('changed', value);
@@ -339,7 +339,7 @@ function App() {
                 <select onChange={e => select(e.target.value)}>
                     {list().map((account, index) => {
                         return <option value={account.address} key={index}>{account.address}</option>
-                    })}i
+                    })}
                 </select>
             </div>
             <div className="card">
@@ -352,16 +352,16 @@ function App() {
 
 
             <div className="card"
-                 style={{
-                     padding: 0,
-                     backgroundColor: "black",
-                     width: "650px",
-                     height: "650px",
-                     float: "left",
-                     display: "flex",
-                     alignItems: "center",
-                     alignContent: "center"
-                 }}>
+                style={{
+                    padding: 0,
+                    backgroundColor: "black",
+                    width: "650px",
+                    height: "650px",
+                    float: "left",
+                    display: "flex",
+                    alignItems: "center",
+                    alignContent: "center"
+                }}>
 
                 <div className="container">
                     <div className="div1">
@@ -377,12 +377,12 @@ function App() {
                                 top: "50%",
                                 left: "50%",
                                 transform: "translate(-50%,-50%)"
-                            }}/></div>) : <></>}
+                            }} /></div>) : <></>}
 
                     </div>
                     <div className="div2">
-                        <div style={{display: "flex", alignItems: "center", height: "650px"}}>
-                            <pre style={{}} className=" MapPre" dangerouslySetInnerHTML={{__html: render()}}></pre>
+                        <div style={{ display: "flex", alignItems: "center", height: "650px" }}>
+                            <pre style={{}} className=" MapPre" dangerouslySetInnerHTML={{ __html: render() }}></pre>
                         </div>
                     </div>
                 </div>
@@ -390,32 +390,32 @@ function App() {
 
             </div>
 
-            <div className="card" style={{"float": "right"}}>
+            <div className="card" style={{ "float": "right" }}>
 
                 <div>
 
                     <p>tokenId: <InputNumber disabled={false} min={1} max={10000} defaultValue={1}
-                                             value={tokenId}
-                                             onChange={onChangeTokenId}/></p>
+                        value={tokenId}
+                        onChange={onChangeTokenId} /></p>
 
                     {/*<p>name: {mapName}</p>*/}
                     <p>owner: {owner}</p>
                 </div>
 
-                <br/>
-                <br/>
+                <br />
+                <br />
 
                 <div>
 
                     <InputNumber disabled={false} min={1} max={10000} defaultValue={1}
-                                 value={gTokenId}
-                                 onChange={onChangeGTokenId}/>
+                        value={gTokenId}
+                        onChange={onChangeGTokenId} />
 
                     <button onClick={() => generateToken(account)}>Generate</button>
 
                 </div>
-                <br/>
-                <br/>
+                <br />
+                <br />
                 <div>
                     {maps.map((map, index) => (
                         <li key={index}>{map.token_id}</li>
@@ -423,15 +423,15 @@ function App() {
                 </div>
 
 
-                <br/>
-                <br/>
+                <br />
+                <br />
 
                 <Button onClick={() => cc_move(account, Direction.Up)}>Move Up
                 </Button>
-                <br/>
+                <br />
                 <Button onClick={() => cc_move(account, Direction.Left)}>Move Left</Button>
                 <Button onClick={() => cc_move(account, Direction.Right)}>Move Right</Button>
-                <br/>
+                <br />
                 <Button onClick={() => cc_move(account, Direction.Down)}>Move Down</Button>
             </div>
 

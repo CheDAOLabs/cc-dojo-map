@@ -573,27 +573,27 @@
   resolved "https://registry.yarnpkg.com/@ctrl/tinycolor/-/tinycolor-3.6.1.tgz#b6c75a56a1947cc916ea058772d666a2c8932f31"
   integrity sha512-SITSV6aIXsuVNV3f3O0f2n/cgyEDWoSqtZMYiAmcsYHydcKrOz3gUxB/iXd/Qf08+IZX4KpgNbvUdMBmWz+kcA==
 
-"@dojoengine/core@^0.1.29":
-  version "0.1.29"
-  resolved "https://registry.yarnpkg.com/@dojoengine/core/-/core-0.1.29.tgz#1762d7cfe0a882aedd472df0a15fb90f47961027"
-  integrity sha512-KbC4PZUhJASkn4dzf1a8uHJvVvnHh/EsnrpY7wUUOV4QOqedgHf6ar4Jxdkba2bSuNjuNwiGvh6f+3crqZ4tMA==
+"@dojoengine/core@^0.1.35":
+  version "0.1.35"
+  resolved "https://registry.npmmirror.com/@dojoengine/core/-/core-0.1.35.tgz#749fd21fbb315f2331c8c3f34ed023e89a146977"
+  integrity sha512-HsO8iM1U96hD28E3VGLdJ9+/un20Et2kvJoF7sdhoZ2V/I/4AXXUDyEWK9K+zVo/sA1sa5yeHJm6+JfkXaqWAA==
   dependencies:
     starknet "^5.19.5"
 
-"@dojoengine/create-burner@^0.1.29":
-  version "0.1.29"
-  resolved "https://registry.yarnpkg.com/@dojoengine/create-burner/-/create-burner-0.1.29.tgz#1d00b340b124ef458879d6ed41307a00bfcffa4a"
-  integrity sha512-HR6aW7dTh0dniBp49tbNH/Kl6Qly+pbiKO47B1l0Yb/SZn96LhMxMDYlwjLJhb7JE6HR8dBhjHjZ5VbSIee/Sw==
+"@dojoengine/create-burner@^0.1.35":
+  version "0.1.35"
+  resolved "https://registry.npmmirror.com/@dojoengine/create-burner/-/create-burner-0.1.35.tgz#d9e06cb9d5a476e7c32634db9c9da22e84124004"
+  integrity sha512-BhrJt0CDrHBh69rghwq2v8D0i0tSxPSDc65Ltxi/5Sk6aM4gWP3oR7442qcUjbcRx1JLg+XP34Xdm/UbTrxZlA==
   dependencies:
     "@starknet-react/core" "^1.0.3"
     encoding "^0.1.13"
     get-starknet-core "^3.2.0"
     js-cookie "^3.0.5"
 
-"@dojoengine/utils@^0.1.29":
-  version "0.1.29"
-  resolved "https://registry.yarnpkg.com/@dojoengine/utils/-/utils-0.1.29.tgz#e224f618221db8094acf91cb937ec0f26e61954c"
-  integrity sha512-+jlOnjRSf9GezTlNowbj0Wf+Sjk6qpN9dzuEVP/cLKtHshEFgwDWRcs1XqWriGRshK7beZtOgJmvLTx6lx12HA==
+"@dojoengine/utils@^0.1.35":
+  version "0.1.35"
+  resolved "https://registry.npmmirror.com/@dojoengine/utils/-/utils-0.1.35.tgz#463f9ee579d3e7a1836c8a7751c57486ac6ddd12"
+  integrity sha512-R/5ah1tfBUom0tOxuiGKZ1ZhVZoyySbkEzRT8Y3oRn6TzfaHBuVsyIXl0nhmPH/UhA/ZEKLqi4hVVdPumKeEyA==
   dependencies:
     "@latticexyz/recs" "^2.0.0-next.11"
     "@latticexyz/utils" "^2.0.0-next.11"

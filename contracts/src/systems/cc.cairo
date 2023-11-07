@@ -10,7 +10,7 @@ mod cc {
     use cc_starknet::{Dungeons, utils::pack::Pack};
     use Dungeons::{DungeonDojo, Name};
     use starknet::{get_caller_address, ContractAddress};
-    use cc_dojo_map::models::cc_map::{Map, Owner, Seed};
+    use cc_dojo_map::models::cc_map::{Map};
     use cc_dojo_map::interface::ICryptsAndCaverns;
 
     // ------------------------------------- event -------------------------------------
@@ -66,14 +66,15 @@ mod cc {
         CryptsAndCavernsImpl::generate_dungeon(@self, 1);
         let map: Map = get!(get_world(@self), 1, (Map));
         emit!(get_world(@self), ForTest { One: 1, Two: 2, Three: 3, Param: map.layout1 });
+    //
+    // CryptsAndCavernsImpl::get_seed(@self, 1);
+    // let seed: Seed = get!(get_world(@self), 1, (Seed));
+    // emit!(get_world(@self), ForTest { One: 1, Two: 2, Three: 3, Param: seed.seed.low.into() });
 
-        CryptsAndCavernsImpl::get_seed(@self, 1);
-        let seed: Seed = get!(get_world(@self), 1, (Seed));
-        emit!(get_world(@self), ForTest { One: 1, Two: 2, Three: 3, Param: seed.seed.low.into() });
+    // CryptsAndCavernsImpl::owner_of(@self, 1);
+    // let owner: Owner = get!(get_world(@self), 1, (Owner));
+    // emit!(get_world(@self), ForTest { One: 1, Two: 2, Three: 3, Param: owner.owner.into() });
 
-        CryptsAndCavernsImpl::owner_of(@self, 1);
-        let owner: Owner = get!(get_world(@self), 1, (Owner));
-        emit!(get_world(@self), ForTest { One: 1, Two: 2, Three: 3, Param: owner.owner.into() });
     //
     // CryptsAndCavernsImpl::get_svg(@self, 1);
     //
@@ -138,9 +139,7 @@ mod cc {
                         emit!(world, Svg { Topic: topic, Index: index, Content: part });
                         index += 1;
                     },
-                    Option::None(_) => {
-                        break;
-                    }
+                    Option::None(_) => { break; }
                 };
             }
         //
@@ -150,16 +149,14 @@ mod cc {
             //
             let mut state = Dungeons::unsafe_new_contract_state();
             let owner = Dungeons::ERC721Impl::owner_of(@state, token_id);
-
-            set!(get_world(self), Owner { token_id: token_id.try_into().unwrap(), owner: owner });
+        // set!(get_world(self), Owner { token_id: token_id.try_into().unwrap(), owner: owner });
         //
         }
 
         fn get_seed(self: @ContractState, token_id: u256) {
             //
             let seed = Dungeons::get_seed(token_id);
-
-            set!(get_world(self), Seed { token_id: token_id.try_into().unwrap(), seed: seed });
+        // set!(get_world(self), Seed { token_id: token_id.try_into().unwrap(), seed: seed });
         //
         }
     //

@@ -7,7 +7,7 @@ version = "0.3.2"
 sierra-replace-ids = true
 
 [dependencies]
-dojo = { git = "https://github.com/dojoengine/dojo.git", tag = "v0.3.3" }
+dojo = { git = "https://github.com/dojoengine/dojo.git", tag = "v0.3.6" }
 cc_starknet = { git = "https://github.com/CheDAOLabs/cryptsandcaverns.git", tag = "v0.1.1-rc0" }
 
 [lib]

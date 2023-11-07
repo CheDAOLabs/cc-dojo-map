@@ -29,16 +29,16 @@ struct Map {
     owner: ContractAddress,
 }
 
-#[derive(Model, Copy, Drop, Serde)]
-struct Owner {
-    #[key]
-    token_id: u128,
-    owner: ContractAddress,
-}
+// #[derive(Model, Copy, Drop, Serde)]
+// struct Owner {
+//     #[key]
+//     token_id: u128,
+//     owner: ContractAddress,
+// }
 
-#[derive(Model, Copy, Drop, Serde)]
-struct Seed {
-    #[key]
-    token_id: u128,
-    seed: u256
-}
+// #[derive(Model, Copy, Drop, Serde)]
+// struct Seed {
+//     #[key]
+//     token_id: u128,
+//     seed: u256
+// }

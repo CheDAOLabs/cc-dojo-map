@@ -637,7 +637,7 @@ export type GetEntitiesQuery = { __typename?: 'Query', entities?: { __typename?:
 
 export const GetEntitiesDocument = gql`
     query getEntities {
-  entities(keys: ["%"]) {
+  entities(keys: ["*"]) {
     edges {
       node {
         keys
