@@ -1,5 +1,9 @@
 > This example is not a complete or fully functional implementation of the game. Instead, it is a basic demonstration that illustrates how to integrate C&C (Crypts And Caverns) into the game world.
 
+# demonstrate
+
+![demonstrate](https://github.com/CheDAOLabs/cc-dojo-map/blob/main/docs/assets/cc-dojo-map.gif?raw=true)
+
 # crypts and caverns example
 
 A simple game example
@@ -124,5 +128,5 @@ http://localhost:5173/
 |cc-dojo-map|v0.1.0|v0.2.3| testnet C&C integrated into Dojo
 |cc-dojo-map|v0.2.0|v0.3.0-rc9| update dojo to v0.3.0-rc9
 |cc-dojo-map|v0.2.1|v0.3.0| update dojo to v0.3.0
-|cc-dojo-map|v0.3.0|v0.3.0| C&C deployed in Katana 
+|cc-dojo-map|v0.3.0|v0.3.0| C&C deployed in Katana
 |cc-dojo-map|v0.3.2|v0.3.3| update dojo to v0.3.3
