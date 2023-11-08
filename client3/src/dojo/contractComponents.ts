@@ -17,24 +17,34 @@ export function defineContractComponents(world: World) {
             );
         })(),
         Moves: (() => {
+            const name = "Moves";
             return defineComponent(
                 world,
-                { player: RecsType.String, remaining: RecsType.Number, last_direction: RecsType.Number },
+                {
+                    remaining: RecsType.Number,
+                    last_direction: RecsType.Number,
+                },
                 {
                     metadata: {
-                        name: "Moves",
-                        types: ["Direction"],
+                        name: name,
+                        types: ["u8", "Direction"],
                     },
                 }
             );
         })(),
         Position: (() => {
+            const name = "Position";
             return defineComponent(
                 world,
-                { player: RecsType.String, vec: { x: RecsType.Number, y: RecsType.Number } },
+                {
+                    vec: {
+                        x: RecsType.Number,
+                        y: RecsType.Number
+                    }
+                },
                 {
                     metadata: {
-                        name: "Position",
+                        name: name,
                         types: ["Vec2"],
                     },
                 }

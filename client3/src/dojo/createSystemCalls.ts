@@ -50,42 +50,48 @@ export function createSystemCalls(
     };
 
     const move = async (signer: Account, direction: Direction) => {
+        console.log("direction" + Direction.Down)
         const entityId = signer.address.toString() as Entity;
 
         const positionId = uuid();
         Position.addOverride(positionId, {
             entity: entityId,
-            value: updatePositionWithDirection(direction, getComponentValue(Position, entityId)),
+            value: updatePositionWithDirection(
+                direction,
+                // currently recs does not support nested values so we use any here
+                getComponentValue(Position, entityId) as any
+            ),
         });
 
         const movesId = uuid();
         Moves.addOverride(movesId, {
             entity: entityId,
-            value: { remaining: (getComponentValue(Moves, entityId)?.remaining || 0) - 1 },
+            value: {
+                remaining: (getComponentValue(Moves, entityId)?.remaining || 0) - 1,
+            },
         });
 
         try {
             const tx = await execute(signer, "actions", "move", [direction]);
-            setComponentsFromEvents(contractComponents,
+            setComponentsFromEvents(
+                contractComponents,
                 getEvents(
-                    await signer.waitForTransaction(tx.transaction_hash,
-                        { retryInterval: 100 }
-                    )
+                    await signer.waitForTransaction(tx.transaction_hash, {
+                        retryInterval: 100,
+                    })
                 )
             );
-
         } catch (e) {
-            console.log(e)
+            console.log(e);
             Position.removeOverride(positionId);
             Moves.removeOverride(movesId);
         } finally {
             Position.removeOverride(positionId);
             Moves.removeOverride(movesId);
         }
-
     };
 
-    const mint = async (signer:Account)=>{
+    const mint = async (signer: Account) => {
 
         try {
             const tx = await execute(signer, "cc", "mint", [
@@ -104,10 +110,10 @@ export function createSystemCalls(
         }
     }
 
-    const generate = async (signer:Account,tokenId:any)=>{
+    const generate = async (signer: Account, tokenId: any) => {
 
         try {
-            const tx = await execute(signer, "cc", "generate_dungeon", [tokenId,0]);
+            const tx = await execute(signer, "cc", "generate_dungeon", [tokenId, 0]);
             setComponentsFromEvents(contractComponents,
                 getEvents(
                     await signer.waitForTransaction(tx.transaction_hash,
