@@ -11,7 +11,7 @@ export function defineContractComponents(world: World) {
                 {
                     metadata: {
                         name: "Map",
-                        types: [],
+                        types: ["u8", "u8", "u8", "u8", "felt252", "felt252", "felt252", "felt252", "felt252", "felt252", "felt252", "felt252", "felt252", "felt252", "felt252", "felt252", "felt252", "felt252", "felt252"],
                     },
                 }
             );

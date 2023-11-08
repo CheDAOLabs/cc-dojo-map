@@ -1,5 +1,5 @@
 import { useDojo } from './DojoContext';
-import { Direction, } from './dojo/createSystemCalls'
+import { Direction } from "./utils";
 import { useComponentValue } from "@latticexyz/react";
 // @ts-ignore
 import { Entity } from '@latticexyz/recs';
@@ -7,6 +7,8 @@ import { useEffect, useState } from 'react';
 import { setComponentsFromGraphQLEntities } from '@dojoengine/utils';
 import { Button, message, ConfigProvider, theme, Input, Select, Spin, InputNumber, Steps } from 'antd';
 import { shortString } from "starknet";
+
+
 
 const coin = "<span class='sk'>🪙</span>";
 const door = "<span class='sk'>🚪</span>"
@@ -59,7 +61,7 @@ function App() {
             components,
             network: { graphSdk, contractComponents }
         },
-        account: { create, list, select, account, isDeploying }
+        account: { create, list, select, account, isDeploying, clear }
     } = useDojo();
 
 
@@ -239,6 +241,7 @@ function App() {
 
         const fetchData = async () => {
             try {
+                console.log("xxxxxxxx:")
                 const { data } = await getEntities();
                 console.log("entity_data", data)
                 let edges = data.entities?.edges;
@@ -259,7 +262,6 @@ function App() {
 
         fetchData();
     }, [entityId, contractComponents]);
-
 
     const [messageApi, contextHolder] = message.useMessage();
 
@@ -333,7 +335,12 @@ function App() {
             theme={{
                 algorithm: darkAlgorithm,
             }}>
-            <Button onClick={create}>{isDeploying ? "deploying burner" : "create burner"}</Button>
+            <div>
+                <Button onClick={create}>
+                    {isDeploying ? "deploying burner" : "create burner"}
+                </Button>
+                <Button onClick={clear}>clear burners</Button>
+            </div>
             <div className="card">
                 select signer:{" "}
                 <select onChange={e => select(e.target.value)}>
