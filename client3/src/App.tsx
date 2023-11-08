@@ -333,7 +333,7 @@ function App() {
             theme={{
                 algorithm: darkAlgorithm,
             }}>
-            <button onClick={create}>{isDeploying ? "deploying burner" : "create burner"}</button>
+            <Button onClick={create}>{isDeploying ? "deploying burner" : "create burner"}</Button>
             <div className="card">
                 select signer:{" "}
                 <select onChange={e => select(e.target.value)}>
@@ -343,8 +343,8 @@ function App() {
                 </select>
             </div>
             <div className="card">
-                <button onClick={() => spawn(account)}>Spawn</button>
-                <button onClick={() => mint(account)}>Mint</button>
+                <Button onClick={() => spawn(account)}>Spawn</Button>
+                <Button onClick={() => mint(account)}>Mint</Button>
 
                 <div>Moves Left: {moves ? `${moves['remaining']}` : 'Need to Spawn'}</div>
                 <div>Position: {(position && position.vec && position.vec['x'] && position.vec['y']) ? `${position.vec['x']}, ${position.vec['y']}` : 'Need to Spawn'}</div>
@@ -411,7 +411,7 @@ function App() {
                         value={gTokenId}
                         onChange={onChangeGTokenId} />
 
-                    <button onClick={() => generateToken(account)}>Generate</button>
+                    <Button onClick={() => generateToken(account)}>Generate</Button>
 
                 </div>
                 <br />

@@ -4,69 +4,38 @@ import { defineComponent, Type as RecsType, World } from "@latticexyz/recs";
 
 export function defineContractComponents(world: World) {
     return {
-        Moves: (() => {
-            const name = "Moves";
+        Map: (() => {
             return defineComponent(
                 world,
-                {
-                    remaining: RecsType.Number,
-                    last_direction: RecsType.Number,
-                },
+                { token_id: RecsType.BigInt, size: RecsType.Number, environment: RecsType.Number, structure: RecsType.Number, legendary: RecsType.Number, layout1: RecsType.BigInt, layout2: RecsType.BigInt, layout3: RecsType.BigInt, doors1: RecsType.BigInt, doors2: RecsType.BigInt, doors3: RecsType.BigInt, points1: RecsType.BigInt, points2: RecsType.BigInt, points3: RecsType.BigInt, affinity: RecsType.BigInt, dungeon_name1: RecsType.BigInt, dungeon_name2: RecsType.BigInt, dungeon_name3: RecsType.BigInt, dungeon_name4: RecsType.BigInt, dungeon_name5: RecsType.BigInt, owner: RecsType.String },
                 {
                     metadata: {
-                        name: name,
-                        types: ["u8", "Direction"],
+                        name: "Map",
+                        types: [],
+                    },
+                }
+            );
+        })(),
+        Moves: (() => {
+            return defineComponent(
+                world,
+                { player: RecsType.String, remaining: RecsType.Number, last_direction: RecsType.Number },
+                {
+                    metadata: {
+                        name: "Moves",
+                        types: ["Direction"],
                     },
                 }
             );
         })(),
         Position: (() => {
-            const name = "Position";
             return defineComponent(
                 world,
-                {
-                    vec: {
-                        x: RecsType.Number,
-                        y: RecsType.Number
-                    }
-                },
+                { player: RecsType.String, vec: { x: RecsType.Number, y: RecsType.Number } },
                 {
                     metadata: {
-                        name: name,
+                        name: "Position",
                         types: ["Vec2"],
-                    },
-                }
-            );
-        })(),
-        Map: (() => {
-            const name = "Map";
-            return defineComponent(
-                world,
-                {
-                    size: RecsType.Number,
-                    environment: RecsType.Number,
-                    structure: RecsType.Number,
-                    legendary: RecsType.Number,
-                    layout1: RecsType.BigInt,
-                    layout2: RecsType.BigInt,
-                    layout3: RecsType.BigInt,
-                    doors1: RecsType.BigInt,
-                    doors2: RecsType.BigInt,
-                    doors3: RecsType.BigInt,
-                    points1: RecsType.BigInt,
-                    points2: RecsType.BigInt,
-                    points3: RecsType.BigInt,
-                    affinity: RecsType.BigInt,
-                    dungeon_name1: RecsType.BigInt,
-                    dungeon_name2: RecsType.BigInt,
-                    dungeon_name3: RecsType.BigInt,
-                    dungeon_name4: RecsType.BigInt,
-                    dungeon_name5: RecsType.BigInt,
-                },
-                {
-                    metadata: {
-                        name: name,
-                        types: ["u8", "u8", "u8", "u8", "felt252", "felt252", "felt252", "felt252", "felt252", "felt252", "felt252", "felt252", "felt252", "felt252", "felt252", "felt252", "felt252", "felt252", "felt252"],
                     },
                 }
             );

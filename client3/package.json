@@ -9,7 +9,7 @@
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "codegen": "graphql-codegen",
-    "create-components": "npx @dojoengine/core ../dojo-starter/target/dev/manifest.json "
+    "create-components": "npx @dojoengine/core ../contracts/target/dev/manifest.json src/dojo/contractComponents.ts http://localhost:5050 0x7c2d3ae67710d4092a23eee9d41058883ca6f9ec62780cd28ae06eab4fd05c5"
   },
   "dependencies": {
     "@dojoengine/core": "^0.1.35",
@@ -27,15 +27,16 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rxjs": "^7.8.1",
-    "starknet": "^5.14.1"
+    "starknet": "^5.14.1",
+    "vite-plugin-pwa": "^0.16.6"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^5.0.0",
     "@graphql-codegen/typescript": "^4.0.1",
     "@graphql-codegen/typescript-graphql-request": "^5.0.0",
     "@graphql-codegen/typescript-operations": "^4.0.1",
-    "@types/node": "^20.4.8",
-    "@types/react": "^18.0.37",
+    "@types/node": "^20.8.9",
+    "@types/react": "^18.2.25",
     "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.59.0",
     "@typescript-eslint/parser": "^5.59.0",

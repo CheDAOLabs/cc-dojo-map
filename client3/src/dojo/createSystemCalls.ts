@@ -1,6 +1,6 @@
 import { SetupNetworkResult } from "./setupNetwork";
 import { Account } from "starknet";
-import { EntityIndex, getComponentValue } from "@latticexyz/recs";
+import { Entity, getComponentValue } from "@latticexyz/recs";
 import { uuid } from "@latticexyz/utils";
 import { ClientComponents } from "./createClientComponents";
 import { updatePositionWithDirection } from "../utils";
@@ -15,7 +15,7 @@ export function createSystemCalls(
 
     const spawn = async (signer: Account) => {
 
-        const entityId = signer.address.toString() as EntityIndex;
+        const entityId = signer.address.toString() as Entity;
 
         const positionId = uuid();
         Position.addOverride(positionId, {
@@ -50,7 +50,7 @@ export function createSystemCalls(
     };
 
     const move = async (signer: Account, direction: Direction) => {
-        const entityId = signer.address.toString() as EntityIndex;
+        const entityId = signer.address.toString() as Entity;
 
         const positionId = uuid();
         Position.addOverride(positionId, {
