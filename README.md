@@ -2,7 +2,12 @@
 
 # demonstrate
 
+for starknet C&C
 ![demonstrate](https://github.com/CheDAOLabs/cc-dojo-map/blob/main/docs/assets/cc-dojo-map.gif?raw=true)
+
+[for dojo C&C](http://3.28.16.185)
+
+![demonstrate](https://github.com/CheDAOLabs/cc-dojo-map/blob/main/docs/assets/dojo-map.gif?raw=true)
 
 # crypts and caverns example
 
