@@ -75,6 +75,10 @@ function App() {
     const position = useComponentValue(components.Position, entityId as Entity);
     const moves = useComponentValue(components.Moves, entityId as Entity);
 
+    console.log('Entity ID:', entityId);
+    console.log('Position component:', components.Position);
+    console.log('Position value:', position);
+
 
     const [loading, setLoading] = useState(false);
     const [entities, setEntities] = useState(null);

@@ -1,7 +1,4 @@
 use starknet::ContractAddress;
-use dojo::database::schema::{
-    Enum, Member, Ty, Struct, SchemaIntrospection, serialize_member, serialize_member_type
-};
 
 #[derive(Model, Copy, Drop, Serde)]
 struct Map {
