@@ -99,21 +99,62 @@ sozo execute CC_CONTRACT_ADDRESS test
 ```
 
 ### build client
+### Environment Setup
 
-1.Build the frontend:
+1. **Bun Installation**: We use [bun](https://bun.sh/) in this repository. To install it, run:
+    ```console
+    curl -fsSL https://bun.sh/install | bash
+    ```
 
-```shell
+---
+
+### Development
+
+#### Package Dependencies Installation:
+
+From the repository root, run the following to install all the necessary package dependencies:
+
+```console
+bun install
+```
+
+#### Package Linking:
+
+To link the packages to the examples or your own project, from the root directory, run:
+
+```console
+bun link
+```
+
+#### Building Packages:
+
+**Note**: Before running the examples, you must build each package.
+
+To do so, navigate to a specific package directory and run the command below. This will initiate bun in watch mode, which will automatically compile and update based on local changes:
+
+```console
+bun run build --watch
+```
+
+To build all packages, from the root directory, run:
+
+```console
+bun run build
+```
+
+To watch for changes on all packages in parallel, from the root directory, run:
+
+```console
+bun run build-watch
+```
+
+#### Start the React app.
+
+```console
 cd client3
-yarn
+bun install
+bun dev
 ```
-
-2.Run:
-
-```shell
-yarn dev
-```
-
-3.Open the following link and use the 'WASD' keys to control movement:
 
 ```shell
 http://localhost:5173/
