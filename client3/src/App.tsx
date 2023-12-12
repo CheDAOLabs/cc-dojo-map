@@ -230,18 +230,18 @@ function App() {
         if (!position.vec) {
             return;
         }
-        setLoading(true);
+        // setLoading(true);
         if (direction == Direction.Up) {
             if (isCollision(position.vec.x, position.vec.y - 1)) {
                 console.log("is collision")
-                setLoading(false);
+                // setLoading(false);
                 return
             }
         }
         if (direction == Direction.Down) {
             if (isCollision(position.vec.x, position.vec.y + 1)) {
                 console.log("is collision")
-                setLoading(false);
+                // setLoading(false);
                 return
             }
         }
@@ -249,7 +249,7 @@ function App() {
         if (direction == Direction.Left) {
             if (isCollision(position.vec.x - 1, position.vec.y)) {
                 console.log("is collision")
-                setLoading(false);
+                // setLoading(false);
                 return
             }
         }
@@ -257,13 +257,13 @@ function App() {
         if (direction == Direction.Right) {
             if (isCollision(position.vec.x + 1, position.vec.y)) {
                 console.log("is collision")
-                setLoading(false);
+                // setLoading(false);
                 return
             }
         }
 
         await move(account, direction)
-        setLoading(false);
+        // setLoading(false);
     }
 
     const { darkAlgorithm } = theme;
