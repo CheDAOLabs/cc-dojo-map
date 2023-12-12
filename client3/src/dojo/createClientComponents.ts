@@ -1,4 +1,4 @@
-import { overridableComponent } from "@latticexyz/recs";
+import { overridableComponent } from "@dojoengine/recs";
 import { SetupNetworkResult } from "./setupNetwork";
 
 

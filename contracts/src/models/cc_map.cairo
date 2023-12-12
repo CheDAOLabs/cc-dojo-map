@@ -1,11 +1,9 @@
 use starknet::ContractAddress;
-use dojo::database::schema::{
-    Enum, Member, Ty, Struct, SchemaIntrospection, serialize_member, serialize_member_type
-};
 
 #[derive(Model, Copy, Drop, Serde)]
 struct Map {
     #[key]
+    player: ContractAddress,
     token_id: u128,
     size: u8,
     environment: u8,
@@ -29,16 +27,16 @@ struct Map {
     owner: ContractAddress,
 }
 
-#[derive(Model, Copy, Drop, Serde)]
-struct Owner {
-    #[key]
-    token_id: u128,
-    owner: ContractAddress,
-}
+// #[derive(Model, Copy, Drop, Serde)]
+// struct Owner {
+//     #[key]
+//     token_id: u128,
+//     owner: ContractAddress,
+// }
 
-#[derive(Model, Copy, Drop, Serde)]
-struct Seed {
-    #[key]
-    token_id: u128,
-    seed: u256
-}
+// #[derive(Model, Copy, Drop, Serde)]
+// struct Seed {
+//     #[key]
+//     token_id: u128,
+//     seed: u256
+// }

@@ -2,12 +2,7 @@
 
 # demonstrate
 
-for starknet C&C
 ![demonstrate](https://github.com/CheDAOLabs/cc-dojo-map/blob/main/docs/assets/cc-dojo-map.gif?raw=true)
-
-[for dojo C&C](http://3.28.16.185)
-
-![demonstrate](https://github.com/CheDAOLabs/cc-dojo-map/blob/main/docs/assets/dojo-map.gif?raw=true)
 
 # crypts and caverns example
 
@@ -92,7 +87,12 @@ sozo migrate --name cc_dojo_map
 torii --world WORLD_ADDRESS
 ```
 
-7. Invoke the contract:
+7. Add auth
+```shell
+cd script & sh default_auth.sh
+```
+
+8. Invoke the contract:
 
 ```shell
 sozo execute CC_CONTRACT_ADDRESS test
@@ -103,7 +103,7 @@ sozo execute CC_CONTRACT_ADDRESS test
 1.Build the frontend:
 
 ```shell
-cd client
+cd client3
 yarn
 ```
 
@@ -134,3 +134,4 @@ http://localhost:5173/
 |cc-dojo-map|v0.2.0|v0.3.0-rc9| update dojo to v0.3.0-rc9
 |cc-dojo-map|v0.2.1|v0.3.0| update dojo to v0.3.0
 |cc-dojo-map|v0.3.0|v0.3.0| C&C deployed in Katana
+|cc-dojo-map|v0.3.15|v0.3.15| update dojo to v0.3.15

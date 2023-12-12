@@ -1,6 +1,14 @@
-import { Direction } from "../dojo/createSystemCalls";
+export enum Direction {
+    Left = 1,
+    Right = 2,
+    Up = 3,
+    Down = 4,
+}
 
-export function updatePositionWithDirection(direction: Direction, value: { vec: { x: number, y: number } }) {
+export function updatePositionWithDirection(
+    direction: Direction,
+    value: { vec: { x: number; y: number } }
+) {
     switch (direction) {
         case Direction.Left:
             value.vec.x--;

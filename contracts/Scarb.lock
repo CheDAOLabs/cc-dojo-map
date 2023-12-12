@@ -3,7 +3,7 @@ version = 1
 
 [[package]]
 name = "cc_dojo_map"
-version = "0.3.2"
+version = "0.3.15"
 dependencies = [
  "cc_starknet",
  "dojo",
@@ -19,15 +19,16 @@ dependencies = [
 
 [[package]]
 name = "dojo"
-version = "0.3.3"
-source = "git+https://github.com/dojoengine/dojo.git?tag=v0.3.3#3c9f109e667ca5d12739e6553fdb8261378f4ecf"
+version = "0.3.15"
+source = "git+https://github.com/dojoengine/dojo.git?tag=v0.3.15#cdbaca4121b1642e1a8ca40d6831bad73d28ed26"
 dependencies = [
  "dojo_plugin",
 ]
 
 [[package]]
 name = "dojo_plugin"
-version = "0.3.3"
+version = "0.3.11"
+source = "git+https://github.com/dojoengine/dojo?tag=v0.3.11#1e651b5d4d3b79b14a7d8aa29a92062fcb9e6659"
 
 [[package]]
 name = "openzeppelin"
