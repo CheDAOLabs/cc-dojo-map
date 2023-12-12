@@ -60,7 +60,7 @@ git clone https://github.com/CheDAOLabs/cc-dojo-map.git
 2. Execute the script, specifying the Dojo version:
 
 ```shell
-dojoup
+dojoup -v v0.3.15
 ```
 
 3. Start Katana:
