@@ -19,7 +19,8 @@ mod cc {
     #[derive(Drop, starknet::Event)]
     enum Event {
         ForTest: ForTest,
-        Svg: Svg
+        Svg: Svg,
+        CryptsAndCaverns: CryptsAndCaverns,
     }
 
     #[derive(Drop, starknet::Event)]
@@ -42,6 +43,32 @@ mod cc {
         Three: u128,
         #[key]
         Param: felt252
+    }
+
+    #[derive(Drop, starknet::Event)]
+    struct CryptsAndCaverns {
+        player: ContractAddress,
+        token_id: u128,
+        size: u8,
+        environment: u8,
+        structure: u8,
+        legendary: u8,
+        layout1: felt252,
+        layout2: felt252,
+        layout3: felt252,
+        doors1: felt252,
+        doors2: felt252,
+        doors3: felt252,
+        points1: felt252,
+        points2: felt252,
+        points3: felt252,
+        affinity: felt252,
+        dungeon_name1: felt252,
+        dungeon_name2: felt252,
+        dungeon_name3: felt252,
+        dungeon_name4: felt252,
+        dungeon_name5: felt252,
+        owner: ContractAddress,
     }
 
     // ------------------------------------- constructor --------------------------------
@@ -90,15 +117,18 @@ mod cc {
         //
         }
 
+
         fn generate_dungeon(self: @ContractState, token_id: u256) {
             //
             let mut state = Dungeons::unsafe_new_contract_state();
             let dungeon = Dungeons::generate_dungeon_dojo(@state, token_id);
+            let player = get_caller_address();
 
             let world = get_world(self);
             set!(
                 world,
                 Map {
+                    player,
                     token_id: token_id.try_into().unwrap(),
                     size: dungeon.size,
                     environment: dungeon.environment,
@@ -121,7 +151,35 @@ mod cc {
                     dungeon_name5: dungeon.dungeon_name.fifth,
                     owner: Dungeons::ERC721Impl::owner_of(@state, token_id)
                 }
-            )
+            );
+
+            emit!(
+                world,
+                CryptsAndCaverns {
+                    player,
+                    token_id: token_id.try_into().unwrap(),
+                    size: dungeon.size,
+                    environment: dungeon.environment,
+                    structure: dungeon.structure,
+                    legendary: dungeon.legendary,
+                    layout1: dungeon.layout.first,
+                    layout2: dungeon.layout.second,
+                    layout3: dungeon.layout.third,
+                    doors1: dungeon.doors.first,
+                    doors2: dungeon.doors.second,
+                    doors3: dungeon.doors.third,
+                    points1: dungeon.points.first,
+                    points2: dungeon.points.second,
+                    points3: dungeon.points.third,
+                    affinity: dungeon.affinity,
+                    dungeon_name1: dungeon.dungeon_name.first,
+                    dungeon_name2: dungeon.dungeon_name.second,
+                    dungeon_name3: dungeon.dungeon_name.third,
+                    dungeon_name4: dungeon.dungeon_name.fourth,
+                    dungeon_name5: dungeon.dungeon_name.fifth,
+                    owner: Dungeons::ERC721Impl::owner_of(@state, token_id)
+                }
+            );
         //
         }
 

@@ -3,6 +3,7 @@ use starknet::ContractAddress;
 #[derive(Model, Copy, Drop, Serde)]
 struct Map {
     #[key]
+    player: ContractAddress,
     token_id: u128,
     size: u8,
     environment: u8,
