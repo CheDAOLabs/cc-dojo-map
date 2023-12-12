@@ -87,7 +87,12 @@ sozo migrate --name cc_dojo_map
 torii --world WORLD_ADDRESS
 ```
 
-7. Invoke the contract:
+7. Add auth
+```shell
+cd script & sh default_auth.sh
+```
+
+8. Invoke the contract:
 
 ```shell
 sozo execute CC_CONTRACT_ADDRESS test
@@ -129,4 +134,4 @@ http://localhost:5173/
 |cc-dojo-map|v0.2.0|v0.3.0-rc9| update dojo to v0.3.0-rc9
 |cc-dojo-map|v0.2.1|v0.3.0| update dojo to v0.3.0
 |cc-dojo-map|v0.3.0|v0.3.0| C&C deployed in Katana
-|cc-dojo-map|v0.3.2|v0.3.3| update dojo to v0.3.3
+|cc-dojo-map|v0.3.15|v0.3.15| update dojo to v0.3.15

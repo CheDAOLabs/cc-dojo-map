@@ -114,6 +114,7 @@ mod cc {
             //
             let mut state = Dungeons::unsafe_new_contract_state();
             Dungeons::mint(ref state);
+            
         //
         }
 

@@ -268,10 +268,8 @@ function App() {
 
     const { darkAlgorithm } = theme;
 
-    const onChangeTokenId = async (value: number) => {
-        console.log('changed', value);
-        setTokenId(value);
-        await loadMap(value)
+    const onChangeTokenId = async () => {
+        await loadMap()
     };
 
     const [gTokenId, setGTokenId] = useState(1)
@@ -282,7 +280,6 @@ function App() {
 
     const generateToken = async (account: any) => {
         generate(account, gTokenId);
-        loadMap();
     }
 
     return (
@@ -357,9 +354,7 @@ function App() {
 
                 <div>
 
-                    <p>tokenId: <InputNumber disabled={false} min={1} max={10000} defaultValue={1}
-                        value={tokenId}
-                        onChange={onChangeTokenId} /></p>
+                    <Button onClick={() => onChangeTokenId()}>Loading MAP</Button>
 
                     {/*<p>name: {mapName}</p>*/}
                     <p>owner: {owner}</p>
