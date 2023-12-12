@@ -55,7 +55,8 @@ export type Map = {
 export type MapConnection = {
   __typename?: 'MapConnection';
   edges?: Maybe<Array<Maybe<MapEdge>>>;
-  total_count: Scalars['Int']['output'];
+  pageInfo: World__PageInfo;
+  totalCount: Scalars['Int']['output'];
 };
 
 export type MapEdge = {
@@ -256,7 +257,8 @@ export type Moves = {
 export type MovesConnection = {
   __typename?: 'MovesConnection';
   edges?: Maybe<Array<Maybe<MovesEdge>>>;
-  total_count: Scalars['Int']['output'];
+  pageInfo: World__PageInfo;
+  totalCount: Scalars['Int']['output'];
 };
 
 export type MovesEdge = {
@@ -309,7 +311,8 @@ export type Position = {
 export type PositionConnection = {
   __typename?: 'PositionConnection';
   edges?: Maybe<Array<Maybe<PositionEdge>>>;
-  total_count: Scalars['Int']['output'];
+  pageInfo: World__PageInfo;
+  totalCount: Scalars['Int']['output'];
 };
 
 export type PositionEdge = {
@@ -356,19 +359,19 @@ export type World__Content = {
 
 export type World__Entity = {
   __typename?: 'World__Entity';
-  created_at?: Maybe<Scalars['DateTime']['output']>;
-  event_id?: Maybe<Scalars['String']['output']>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  eventId?: Maybe<Scalars['String']['output']>;
   id?: Maybe<Scalars['ID']['output']>;
   keys?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  model_names?: Maybe<Scalars['String']['output']>;
   models?: Maybe<Array<Maybe<ModelUnion>>>;
-  updated_at?: Maybe<Scalars['DateTime']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
 
 export type World__EntityConnection = {
   __typename?: 'World__EntityConnection';
   edges?: Maybe<Array<Maybe<World__EntityEdge>>>;
-  total_count: Scalars['Int']['output'];
+  pageInfo: World__PageInfo;
+  totalCount: Scalars['Int']['output'];
 };
 
 export type World__EntityEdge = {
@@ -379,17 +382,18 @@ export type World__EntityEdge = {
 
 export type World__Event = {
   __typename?: 'World__Event';
-  created_at?: Maybe<Scalars['DateTime']['output']>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
   data?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   id?: Maybe<Scalars['ID']['output']>;
   keys?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  transaction_hash?: Maybe<Scalars['String']['output']>;
+  transactionHash?: Maybe<Scalars['String']['output']>;
 };
 
 export type World__EventConnection = {
   __typename?: 'World__EventConnection';
   edges?: Maybe<Array<Maybe<World__EventEdge>>>;
-  total_count: Scalars['Int']['output'];
+  pageInfo: World__PageInfo;
+  totalCount: Scalars['Int']['output'];
 };
 
 export type World__EventEdge = {
@@ -401,18 +405,19 @@ export type World__EventEdge = {
 export type World__Metadata = {
   __typename?: 'World__Metadata';
   content?: Maybe<World__Content>;
-  cover_img?: Maybe<Scalars['String']['output']>;
-  created_at?: Maybe<Scalars['DateTime']['output']>;
-  icon_img?: Maybe<Scalars['String']['output']>;
+  coverImg?: Maybe<Scalars['String']['output']>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  iconImg?: Maybe<Scalars['String']['output']>;
   id?: Maybe<Scalars['ID']['output']>;
-  updated_at?: Maybe<Scalars['DateTime']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
   uri?: Maybe<Scalars['String']['output']>;
 };
 
 export type World__MetadataConnection = {
   __typename?: 'World__MetadataConnection';
   edges?: Maybe<Array<Maybe<World__MetadataEdge>>>;
-  total_count: Scalars['Int']['output'];
+  pageInfo: World__PageInfo;
+  totalCount: Scalars['Int']['output'];
 };
 
 export type World__MetadataEdge = {
@@ -423,23 +428,32 @@ export type World__MetadataEdge = {
 
 export type World__Model = {
   __typename?: 'World__Model';
-  class_hash?: Maybe<Scalars['felt252']['output']>;
-  created_at?: Maybe<Scalars['DateTime']['output']>;
+  classHash?: Maybe<Scalars['felt252']['output']>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
   id?: Maybe<Scalars['ID']['output']>;
   name?: Maybe<Scalars['String']['output']>;
-  transaction_hash?: Maybe<Scalars['felt252']['output']>;
+  transactionHash?: Maybe<Scalars['felt252']['output']>;
 };
 
 export type World__ModelConnection = {
   __typename?: 'World__ModelConnection';
   edges?: Maybe<Array<Maybe<World__ModelEdge>>>;
-  total_count: Scalars['Int']['output'];
+  pageInfo: World__PageInfo;
+  totalCount: Scalars['Int']['output'];
 };
 
 export type World__ModelEdge = {
   __typename?: 'World__ModelEdge';
   cursor?: Maybe<Scalars['Cursor']['output']>;
   node?: Maybe<World__Model>;
+};
+
+export type World__PageInfo = {
+  __typename?: 'World__PageInfo';
+  endCursor?: Maybe<Scalars['Cursor']['output']>;
+  hasNextPage?: Maybe<Scalars['Boolean']['output']>;
+  hasPreviousPage?: Maybe<Scalars['Boolean']['output']>;
+  startCursor?: Maybe<Scalars['Cursor']['output']>;
 };
 
 export type World__Query = {
@@ -569,12 +583,18 @@ export type World__Social = {
 export type World__Subscription = {
   __typename?: 'World__Subscription';
   entityUpdated: World__Entity;
+  eventEmitted: World__Event;
   modelRegistered: World__Model;
 };
 
 
 export type World__SubscriptionEntityUpdatedArgs = {
   id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+
+export type World__SubscriptionEventEmittedArgs = {
+  keys?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
@@ -585,19 +605,20 @@ export type World__SubscriptionModelRegisteredArgs = {
 export type World__Transaction = {
   __typename?: 'World__Transaction';
   calldata?: Maybe<Array<Maybe<Scalars['felt252']['output']>>>;
-  created_at?: Maybe<Scalars['DateTime']['output']>;
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
   id?: Maybe<Scalars['ID']['output']>;
-  max_fee?: Maybe<Scalars['felt252']['output']>;
+  maxFee?: Maybe<Scalars['felt252']['output']>;
   nonce?: Maybe<Scalars['felt252']['output']>;
-  sender_address?: Maybe<Scalars['felt252']['output']>;
+  senderAddress?: Maybe<Scalars['felt252']['output']>;
   signature?: Maybe<Array<Maybe<Scalars['felt252']['output']>>>;
-  transaction_hash?: Maybe<Scalars['felt252']['output']>;
+  transactionHash?: Maybe<Scalars['felt252']['output']>;
 };
 
 export type World__TransactionConnection = {
   __typename?: 'World__TransactionConnection';
   edges?: Maybe<Array<Maybe<World__TransactionEdge>>>;
-  total_count: Scalars['Int']['output'];
+  pageInfo: World__PageInfo;
+  totalCount: Scalars['Int']['output'];
 };
 
 export type World__TransactionEdge = {
