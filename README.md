@@ -89,7 +89,7 @@ torii --world WORLD_ADDRESS
 
 7. Add auth
 ```shell
-cd scripts & sh default_auth.sh
+cd scripts & sh default_auth.sh & sh cc_auth.sh
 ```
 
 8. Invoke the contract:
