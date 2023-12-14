@@ -41,7 +41,7 @@ export function createSystemCalls(
         try {
             const { transaction_hash } = await execute(
                 signer,
-                "actions",
+                "cc_dojo_map::actions::actions",
                 "spawn",
                 []
             );
@@ -94,7 +94,7 @@ export function createSystemCalls(
         try {
             const { transaction_hash } = await execute(
                 signer,
-                "actions",
+                "cc_dojo_map::actions::actions",
                 "move",
                 [direction]
             );
@@ -120,7 +120,7 @@ export function createSystemCalls(
     const mint = async (signer: Account) => {
 
         try {
-            const tx = await execute(signer, "cc", "mint", [
+            const tx = await execute(signer, "cc_dojo_map::systems::cc::cc", "mint", [
 
             ]);
             setComponentsFromEvents(contractComponents,
@@ -139,7 +139,7 @@ export function createSystemCalls(
     const generate = async (signer: Account, tokenId: any) => {
 
         try {
-            const tx = await execute(signer, "cc", "generate_dungeon", [tokenId, 0]);
+            const tx = await execute(signer, "cc_dojo_map::systems::cc::cc", "generate_dungeon", [tokenId, 0]);
             setComponentsFromEvents(contractComponents,
                 getEvents(
                     await signer.waitForTransaction(tx.transaction_hash,
