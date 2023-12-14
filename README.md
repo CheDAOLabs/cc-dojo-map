@@ -60,7 +60,7 @@ git clone https://github.com/CheDAOLabs/cc-dojo-map.git
 2. Execute the script, specifying the Dojo version:
 
 ```shell
-dojoup -v v0.3.15
+dojoup
 ```
 
 3. Start Katana:
@@ -78,7 +78,7 @@ sozo build
 5. Deploy the contract:
 
 ```shell
-sozo migrate --name cc_dojo_map  
+sozo migrate
 ```
 
 6. Indexer
