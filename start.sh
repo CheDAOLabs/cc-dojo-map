@@ -1,6 +1,0 @@
-sozo auth writer Position move --world 0x223b959926c92e10a5de78a76871fa40cefafbdce789137843df7c7b30e3e0
-sozo auth writer Position spawn --world 0x223b959926c92e10a5de78a76871fa40cefafbdce789137843df7c7b30e3e0
-sozo auth writer Moves move --world 0x223b959926c92e10a5de78a76871fa40cefafbdce789137843df7c7b30e3e0
-sozo auth writer Moves spawn --world 0x223b959926c92e10a5de78a76871fa40cefafbdce789137843df7c7b30e3e0
-
-torii --graphql-port 8081 --world 0x223b959926c92e10a5de78a76871fa40cefafbdce789137843df7c7b30e3e0
