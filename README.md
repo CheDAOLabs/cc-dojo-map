@@ -99,61 +99,14 @@ sozo execute CC_CONTRACT_ADDRESS test
 ```
 
 ### build client
-### Environment Setup
 
-1. **Bun Installation**: We use [bun](https://bun.sh/) in this repository. To install it, run:
-    ```console
-    curl -fsSL https://bun.sh/install | bash
-    ```
-
----
-
-### Development
-
-#### Package Dependencies Installation:
-
-From the repository root, run the following to install all the necessary package dependencies:
-
-```console
-bun install
-```
-
-#### Package Linking:
-
-To link the packages to the examples or your own project, from the root directory, run:
-
-```console
-bun link
-```
-
-#### Building Packages:
-
-**Note**: Before running the examples, you must build each package.
-
-To do so, navigate to a specific package directory and run the command below. This will initiate bun in watch mode, which will automatically compile and update based on local changes:
-
-```console
-bun run build --watch
-```
-
-To build all packages, from the root directory, run:
-
-```console
-bun run build
-```
-
-To watch for changes on all packages in parallel, from the root directory, run:
-
-```console
-bun run build-watch
-```
 
 #### Start the React app.
 
 ```console
 cd client3
-bun install
-bun dev
+yarn
+yarn dev
 ```
 
 ```shell
@@ -176,3 +129,4 @@ http://localhost:5173/
 |cc-dojo-map|v0.2.1|v0.3.0| update dojo to v0.3.0
 |cc-dojo-map|v0.3.0|v0.3.0| C&C deployed in Katana
 |cc-dojo-map|v0.3.15|v0.3.15| update dojo to v0.3.15
+|cc-dojo-map|v0.4.0|v0.4.0| update dojo to v0.4.0
