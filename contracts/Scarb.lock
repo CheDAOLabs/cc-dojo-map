@@ -3,7 +3,7 @@ version = 1
 
 [[package]]
 name = "cc_dojo_map"
-version = "0.4.0"
+version = "0.4.2"
 dependencies = [
  "cc_starknet",
  "dojo",
@@ -19,8 +19,8 @@ dependencies = [
 
 [[package]]
 name = "dojo"
-version = "0.4.0"
-source = "git+https://github.com/dojoengine/dojo?tag=v0.4.0#17c1b42910cb751fe3986ed44ce4e3a6a16b1e51"
+version = "0.4.2"
+source = "git+https://github.com/dojoengine/dojo.git?tag=v0.4.2#3b8252dc64c2ec2c5df17f2922c5a5abab668cf3"
 dependencies = [
  "dojo_plugin",
 ]
