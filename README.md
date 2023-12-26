@@ -4,6 +4,8 @@
 
 ![demonstrate](https://github.com/CheDAOLabs/cc-dojo-map/blob/main/docs/assets/cc-dojo-map.gif?raw=true)
 
+![demonstrate](https://github.com/CheDAOLabs/cc-dojo-map/blob/v0.4.2/docs/assets/dojo-map.gif?raw=true)
+
 # crypts and caverns example
 
 A simple game example
@@ -130,3 +132,4 @@ http://localhost:5173/
 |cc-dojo-map|v0.3.0|v0.3.0| C&C deployed in Katana
 |cc-dojo-map|v0.3.15|v0.3.15| update dojo to v0.3.15
 |cc-dojo-map|v0.4.0|v0.4.0| update dojo to v0.4.0
+|cc-dojo-map|v0.4.2|v0.4.2| update dojo to v0.4.2
