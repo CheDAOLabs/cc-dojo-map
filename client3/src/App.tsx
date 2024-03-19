@@ -1,11 +1,11 @@
-import { useComponentValue, useSync } from "@dojoengine/react";
+import { Button, message, ConfigProvider, theme, Input, Select, Spin, InputNumber, Steps } from 'antd';
+import { useComponentValue } from "@dojoengine/react";
 import { Entity } from "@dojoengine/recs";
 import { useEffect, useState } from "react";
 import "./App.css";
-import { useDojo } from "./DojoContext";
 import { Direction } from "./utils";
-import { getEntityIdFromKeys, setComponentsFromGraphQLEntities } from "@dojoengine/utils";
-import { Button, message, ConfigProvider, theme, Input, Select, Spin, InputNumber, Steps } from 'antd';
+import { getEntityIdFromKeys } from "@dojoengine/utils";
+import { useDojo } from "./dojo/useDojo";
 
 
 
@@ -47,37 +47,25 @@ const decode_map = (layout: any, size: any) => {
 function App() {
     const {
         setup: {
-            systemCalls: { spawn, move, mint, generate },
-            components: { Moves, Position, Map },
-            network: { contractComponents: {
-                Moves: MovesContract,
-                Position: PositionContract,
-                Map: MapContract,
-            },
-                toriiClient,
-            }
+            systemCalls: { spawn, move, mint, generate_dungeon },
+            clientComponents: { Moves, Position, Map },
         },
-        account: {
-            create,
-            list,
-            select,
-            account,
-            isDeploying,
-            clear, }
+        account,
     } = useDojo();
 
 
     // entity id - this example uses the account address as the entity id
-    const entityId = getEntityIdFromKeys([BigInt(account.address)]) as Entity;
+    const entityId = getEntityIdFromKeys([
+        BigInt(account?.account.address),
+    ]) as Entity;
 
     // get current component values
     const position = useComponentValue(Position, entityId);
     const moves = useComponentValue(Moves, entityId);
     const map = useComponentValue(Map, entityId);
-
-    useSync(toriiClient, MovesContract, [BigInt(account.address)]);
-    useSync(toriiClient, PositionContract, [BigInt(account.address)]);
-    useSync(toriiClient, MapContract, [BigInt(account.address)]);
+    // const position = Position.values;
+    // const moves = Moves.values;
+    // const map = Map.values;
 
     console.log('Entity ID:', entityId);
     console.log('Position component:', Position);
@@ -102,7 +90,7 @@ function App() {
         if (!map) {
             return
         }
-        const owner = map?.owner;
+        const owner = map.owner;
         console.log("owner", owner)
         setOwner(owner.substring(0, 5) + '...' + owner.substring(owner.length - 5, owner.length));
         // setOwner(owner);
@@ -188,19 +176,19 @@ function App() {
         async function handleKeyDown(event: any) {
             console.log("handle KeyDown:", event.key)
             if (event.key === 'w') {
-                await cc_move(account, Direction.Up)
+                await cc_move(account.account, Direction.Up)
             }
 
             if (event.key === 's') {
-                await cc_move(account, Direction.Down)
+                await cc_move(account.account, Direction.Down)
             }
 
             if (event.key === 'a') {
-                await cc_move(account, Direction.Left)
+                await cc_move(account.account, Direction.Left)
             }
 
             if (event.key === 'd') {
-                await cc_move(account, Direction.Right)
+                await cc_move(account.account, Direction.Right)
             }
         }
 
@@ -262,7 +250,7 @@ function App() {
             }
         }
 
-        await move(account, direction)
+        await move(account.account, direction)
         // setLoading(false);
     }
 
@@ -279,7 +267,8 @@ function App() {
     };
 
     const generateToken = async (account: any) => {
-        generate(account, gTokenId);
+        console.log('gTokenId', gTokenId);
+        generate_dungeon(account.account, gTokenId);
     }
 
     return (
@@ -288,22 +277,26 @@ function App() {
                 algorithm: darkAlgorithm,
             }}>
             <div>
-                <Button onClick={create}>
-                    {isDeploying ? "deploying burner" : "create burner"}
+                <Button onClick={account?.create}>
+                    {account?.isDeploying ? "deploying burner" : "create burner"}
                 </Button>
-                <Button onClick={clear}>clear burners</Button>
+                <Button onClick={() => account.clear()}>clear burners</Button>
             </div>
             <div className="card">
                 select signer:{" "}
-                <select onChange={e => select(e.target.value)}>
-                    {list().map((account, index) => {
-                        return <option value={account.address} key={index}>{account.address}</option>
+                <select onChange={e => account.select(e.target.value)}>
+                    {account?.list().map((account, index) => {
+                         return (
+                            <option value={account.address} key={index}>
+                                {account.address}
+                            </option>
+                        );
                     })}
                 </select>
             </div>
             <div className="card">
-                <Button onClick={() => spawn(account)}>Spawn</Button>
-                <Button onClick={() => mint(account)}>Mint</Button>
+                <Button onClick={() => spawn(account.account)}>Spawn</Button>
+                <Button onClick={() => mint(account.account)}>Mint</Button>
 
                 <div>Moves Left: {moves ? `${moves['remaining']}` : 'Need to Spawn'}</div>
                 <div>Position: {(position && position.vec && position.vec.x && position.vec.y) ? `${position.vec.x}, ${position.vec.y}` : 'Need to Spawn'}</div>
@@ -369,7 +362,7 @@ function App() {
                         value={gTokenId}
                         onChange={onChangeGTokenId} />
 
-                    <Button onClick={() => generateToken(account)}>Generate</Button>
+                    <Button onClick={() => generateToken(account.account)}>Generate</Button>
 
                 </div>
                 <br />
@@ -384,13 +377,13 @@ function App() {
                 <br />
                 <br />
 
-                <Button onClick={() => cc_move(account, Direction.Up)}>Move Up
+                <Button onClick={() => cc_move(account.account, Direction.Up)}>Move Up
                 </Button>
                 <br />
-                <Button onClick={() => cc_move(account, Direction.Left)}>Move Left</Button>
-                <Button onClick={() => cc_move(account, Direction.Right)}>Move Right</Button>
+                <Button onClick={() => cc_move(account.account, Direction.Left)}>Move Left</Button>
+                <Button onClick={() => cc_move(account.account, Direction.Right)}>Move Right</Button>
                 <br />
-                <Button onClick={() => cc_move(account, Direction.Down)}>Move Down</Button>
+                <Button onClick={() => cc_move(account.account, Direction.Down)}>Move Down</Button>
             </div>
 
 

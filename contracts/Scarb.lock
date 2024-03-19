@@ -3,7 +3,7 @@ version = 1
 
 [[package]]
 name = "cc_dojo_map"
-version = "0.4.2"
+version = "0.5.1"
 dependencies = [
  "cc_starknet",
  "dojo",
@@ -19,8 +19,8 @@ dependencies = [
 
 [[package]]
 name = "dojo"
-version = "0.4.2"
-source = "git+https://github.com/dojoengine/dojo.git?tag=v0.4.2#3b8252dc64c2ec2c5df17f2922c5a5abab668cf3"
+version = "0.5.1"
+source = "git+https://github.com/dojoengine/dojo.git?tag=v0.5.1#4a6cad5f21d8da71714ae6ff48c9cc6ecaae642a"
 dependencies = [
  "dojo_plugin",
 ]
@@ -33,4 +33,4 @@ source = "git+https://github.com/dojoengine/dojo?tag=v0.3.11#1e651b5d4d3b79b14a7
 [[package]]
 name = "openzeppelin"
 version = "0.8.0-beta.0"
-source = "git+https://github.com/OpenZeppelin/cairo-contracts.git?tag=v0.8.0-beta.0#4c95981a7178e43730f152c85a92336dc6a22d62"
+source = "git+https://github.com/OpenZeppelin/cairo-contracts.git?tag=v0.8.0-beta.0#9a51acae41aff9223eb3eb888f164cce8e77b497"

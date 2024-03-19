@@ -1,5 +1,5 @@
 import { SetupNetworkResult } from "./setupNetwork";
-import { Account } from "starknet";
+import { AccountInterface } from "starknet";
 import { Entity, getComponentValue } from "@dojoengine/recs";
 import { uuid } from "@latticexyz/utils";
 import { ClientComponents } from "./createClientComponents";
@@ -9,17 +9,20 @@ import {
     getEvents,
     setComponentsFromEvents,
 } from "@dojoengine/utils";
+import type { IWorld } from "./generated/generated";
+import { ContractComponents } from "./generated/contractComponents";
 
 export type SystemCalls = ReturnType<typeof createSystemCalls>;
 
 export function createSystemCalls(
-    { execute, contractComponents }: SetupNetworkResult,
+    { client }: { client: IWorld },
+    contractComponents: ContractComponents,
     { Position, Moves }: ClientComponents
 ) {
 
-    const spawn = async (signer: Account) => {
+    const spawn = async (account: AccountInterface) => {
         const entityId = getEntityIdFromKeys([
-            BigInt(signer.address),
+            BigInt(account.address),
         ]) as Entity;
 
         const positionId = uuid();
@@ -39,17 +42,14 @@ export function createSystemCalls(
         });
 
         try {
-            const { transaction_hash } = await execute(
-                signer,
-                "cc_dojo_map::actions::actions",
-                "spawn",
-                []
-            );
+            const { transaction_hash } = await client.actions.spawn({
+                account,
+            });
 
             setComponentsFromEvents(
                 contractComponents,
                 getEvents(
-                    await signer.waitForTransaction(transaction_hash, {
+                    await account.waitForTransaction(transaction_hash, {
                         retryInterval: 100,
                     })
                 )
@@ -64,9 +64,9 @@ export function createSystemCalls(
         }
     };
 
-    const move = async (signer: Account, direction: Direction) => {
+    const move = async (account: AccountInterface, direction: Direction) => {
         const entityId = getEntityIdFromKeys([
-            BigInt(signer.address),
+            BigInt(account.address),
         ]) as Entity;
 
         const positionId = uuid();
@@ -92,17 +92,15 @@ export function createSystemCalls(
         });
 
         try {
-            const { transaction_hash } = await execute(
-                signer,
-                "cc_dojo_map::actions::actions",
-                "move",
-                [direction]
-            );
+            const { transaction_hash } = await client.actions.move({
+                account,
+                direction,
+            });
 
             setComponentsFromEvents(
                 contractComponents,
                 getEvents(
-                    await signer.waitForTransaction(transaction_hash, {
+                    await account.waitForTransaction(transaction_hash, {
                         retryInterval: 100,
                     })
                 )
@@ -117,15 +115,15 @@ export function createSystemCalls(
         }
     };
 
-    const mint = async (signer: Account) => {
+    const mint = async (account: AccountInterface) => {
 
         try {
-            const tx = await execute(signer, "cc_dojo_map::systems::cc::cc", "mint", [
-
-            ]);
+            const { transaction_hash } = await client.cc.mint({
+                account,
+            });
             setComponentsFromEvents(contractComponents,
                 getEvents(
-                    await signer.waitForTransaction(tx.transaction_hash,
+                    await account.waitForTransaction(transaction_hash,
                         { retryInterval: 100 }
                     )
                 )
@@ -136,13 +134,17 @@ export function createSystemCalls(
         }
     }
 
-    const generate = async (signer: Account, tokenId: any) => {
+    const generate_dungeon = async (account: AccountInterface, cc_token_id: number) => {
 
         try {
-            const tx = await execute(signer, "cc_dojo_map::systems::cc::cc", "generate_dungeon", [tokenId, 0]);
+            const { transaction_hash } = await client.cc.generate_dungeon({
+                account,
+                cc_token_id
+            });
+
             setComponentsFromEvents(contractComponents,
                 getEvents(
-                    await signer.waitForTransaction(tx.transaction_hash,
+                    await account.waitForTransaction(transaction_hash,
                         { retryInterval: 100 }
                     )
                 )
@@ -158,6 +160,6 @@ export function createSystemCalls(
         spawn,
         move,
         mint,
-        generate
+        generate_dungeon
     };
 }

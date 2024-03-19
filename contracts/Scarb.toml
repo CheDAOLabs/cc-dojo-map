@@ -1,13 +1,13 @@
 [package]
 cairo-version = "2.4.0"
 name = "cc_dojo_map"
-version = "0.4.2"
+version = "0.5.1"
 
 [cairo]
 sierra-replace-ids = true
 
 [dependencies]
-dojo = { git = "https://github.com/dojoengine/dojo.git", tag = "v0.4.2" }
+dojo = { git = "https://github.com/dojoengine/dojo.git", tag = "v0.5.1" }
 cc_starknet = { git = "https://github.com/CheDAOLabs/cryptsandcaverns.git", tag = "v0.1.1-rc0" }
 
 [lib]
@@ -20,7 +20,7 @@ initializer_class_hash = "0xbeef"
 [tool.dojo.env]
 rpc_url = "http://localhost:5050/"
 # Default account for katana with seed = 0
-account_address = "0x517ececd29116499f4a1b64b094da79ba08dfd54a3edaa316134c41f8160973"
+account_address = "0x6162896d1d7ab204c7ccac6dd5f8e9e7c25ecd5ae4fcb4ad32e57786bb46e03"
 private_key = "0x1800000000300000180000000000030000000000003006001800006600"
 # world_address = "0x7d1f066a910bd86f532fa9ca66766722c20d47462fb99fb2fb0e1030262f9c5"
 
