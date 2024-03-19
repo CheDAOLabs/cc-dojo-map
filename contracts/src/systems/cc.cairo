@@ -1,6 +1,19 @@
 use dojo::world::{IWorldDispatcher, IWorldDispatcherTrait};
 
 // ---------------------------------------- contract --------------------------------------
+#[starknet::interface]
+trait ICryptsAndCaverns<TContractState> {
+    fn owner_of(self: @TContractState, token_id: u256);
+
+    fn get_svg(self: @TContractState, token_id: u256);
+
+    fn generate_dungeon(self: @TContractState, token_id: u256);
+
+    fn get_seed(self: @TContractState, token_id: u256);
+
+    fn mint(ref self: TContractState);
+}
+
 
 #[dojo::contract]
 mod cc {
@@ -11,7 +24,7 @@ mod cc {
     use Dungeons::{DungeonDojo, Name};
     use starknet::{get_caller_address, ContractAddress};
     use cc_dojo_map::models::cc_map::{Map};
-    use cc_dojo_map::interface::ICryptsAndCaverns;
+    use super::ICryptsAndCaverns;
 
     // ------------------------------------- event -------------------------------------
 
@@ -81,33 +94,8 @@ mod cc {
 
     // ------------------------------------- implement ----------------------------------
 
-    fn get_world(self: @ContractState) -> IWorldDispatcher {
-        self.world_dispatcher.read()
-    }
 
-    #[external(v0)]
-    fn test(ref self: ContractState) {
-        //
-        CryptsAndCavernsImpl::mint(ref self);
-
-        CryptsAndCavernsImpl::generate_dungeon(@self, 1);
-        let map: Map = get!(get_world(@self), 1, (Map));
-        emit!(get_world(@self), ForTest { One: 1, Two: 2, Three: 3, Param: map.layout1 });
-    //
-    // CryptsAndCavernsImpl::get_seed(@self, 1);
-    // let seed: Seed = get!(get_world(@self), 1, (Seed));
-    // emit!(get_world(@self), ForTest { One: 1, Two: 2, Three: 3, Param: seed.seed.low.into() });
-
-    // CryptsAndCavernsImpl::owner_of(@self, 1);
-    // let owner: Owner = get!(get_world(@self), 1, (Owner));
-    // emit!(get_world(@self), ForTest { One: 1, Two: 2, Three: 3, Param: owner.owner.into() });
-
-    //
-    // CryptsAndCavernsImpl::get_svg(@self, 1);
-    //
-    }
-
-    #[external(v0)]
+    #[abi(embed_v0)]
     impl CryptsAndCavernsImpl of ICryptsAndCaverns<ContractState> {
         //
         fn mint(ref self: ContractState) {
@@ -125,7 +113,7 @@ mod cc {
             let dungeon = Dungeons::generate_dungeon_dojo(@state, token_id);
             let player = get_caller_address();
 
-            let world = get_world(self);
+            let world = self.world_dispatcher.read();
             set!(
                 world,
                 Map {
@@ -189,7 +177,7 @@ mod cc {
             let mut state = Dungeons::unsafe_new_contract_state();
             let mut svg = Dungeons::get_svg(@state, token_id);
 
-            let world = get_world(self);
+            let world = self.world_dispatcher.read();
             let mut index = 0;
             let topic: felt252 = 'svg';
             loop {

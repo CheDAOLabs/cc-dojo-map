@@ -1,13 +1,10 @@
-mod interface;
-
-mod models {
-    mod direction;
-    mod cc_map;
-}
-mod actions;
-
 mod systems {
+    mod actions;
     mod cc;
 }
 
-mod utils;
+mod models {
+    mod moves;
+    mod position;
+    mod cc_map;
+}
